@@ -1,0 +1,25 @@
+{
+  "name": "base-ssr-app",
+  "version": "0.0.1",
+  "description": "react with ssr",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appliedblockchain/base-ssr-app.git"
+  },
+  "keywords": [
+    "react",
+    "ssr",
+    "node",
+    "koa"
+  ],
+  "author": "Applied Blockchain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appliedblockchain/base-ssr-app/issues"
+  },
+  "homepage": "https://github.com/appliedblockchain/base-ssr-app#readme"
+}
