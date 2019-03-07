@@ -3,7 +3,7 @@ import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ensureReady, After } from '@jaredpalmer/after';
 import './client.css';
-import routes from './routes';
+import routes from '../shared/routes';
 
 ensureReady(routes).then(data =>
   hydrate(

@@ -3,7 +3,7 @@ import Router from 'koa-router'
 import statics from 'koa-static'
 import bodyParser from 'koa-bodyparser'
 import { render } from '@jaredpalmer/after';
-import routes from './routes';
+import routes from '../shared/routes';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
