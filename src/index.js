@@ -1,24 +1,32 @@
-let app = require('./server').default;
+import http from "http";
+
+let app = require("./server").default;
+
+// @see https://github.com/koajs/koa/blob/master/docs/api/index.md#appcallback
+let currentHandler = app.callback();
+const server = http.createServer(currentHandler);
+
+server.listen(process.env.PORT || 3000, error => {
+  if (error) {
+    console.log(error);
+  }
+
+  console.log("🚀 Server Started!");
+});
 
 if (module.hot) {
-  module.hot.accept('./server', function() {
-    console.log('🔁  HMR Reloading `./server`...');
+  console.log("✅  Server-side HMR Enabled!");
+
+  module.hot.accept("./server", () => {
+    console.log("🔁  HMR Reloading `./server`...");
+
     try {
-      app = require('./server').default;
+      const newHandler = require("./server").default.callback();
+      server.removeListener("request", currentHandler);
+      server.on("request", newHandler);
+      currentHandler = newHandler;
     } catch (error) {
       console.error(error);
     }
   });
-  console.info('✅  Server-side HMR Enabled!');
 }
-
-const port = process.env.PORT || 3000;
-
-export default app
-  .listen(port, function(err) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(`🚀 Started on port ${port}`);
-  });
