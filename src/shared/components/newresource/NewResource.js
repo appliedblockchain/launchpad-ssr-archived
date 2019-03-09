@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
 
-class About extends Component {
+class NewResourceIndex extends Component {
 
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
     const { users, companies } = ctx.data
