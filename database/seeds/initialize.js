@@ -7,5 +7,12 @@ exports.seed = async knex => {
     { email: 'tgomes@appliedblockchain.com', name: 'tgomes', password: '*1337*' },
     { email: 'fcanessa@appliedblockchain.com', name: 'fcanessa', password: 'qwerty' },
     { email: 'dricher@appliedblockchain.com', name: 'dricher', password: '<3<3<3' }
-  ]);
-};
+  ])
+
+  await knex('companies').insert([
+    { name: 'applied blockchain' },
+    { name: 'ethdev' },
+    { name: 'blockstream' },
+    { name: 'paritytech' },
+  ])
+}

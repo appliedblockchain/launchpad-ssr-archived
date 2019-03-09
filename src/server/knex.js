@@ -6,7 +6,8 @@ const createInstance = () => knexInit({
   connection: {
     user: 'postgres',
     password: '1234567890',
-    database: 'ssr'
+    database: 'ssr',
+    port: 5432
   }
 })
 

@@ -1,15 +1,16 @@
-import Koa from "koa";
-import Router from "koa-router";
-import statics from "koa-static";
-import helmet from "koa-helmet";
-import bodyParser from "koa-bodyparser";
-import { render } from "@jaredpalmer/after";
-import routes from "../shared/routes";
+import Koa from "koa"
+import Router from "koa-router"
+import statics from "koa-static"
+import helmet from "koa-helmet"
+import bodyParser from "koa-bodyparser"
+import { render } from "@jaredpalmer/after"
+import routes from "../shared/routes"
+import knex from "./knex"
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
-const server = new Koa();
-const router = new Router();
+const server = new Koa()
+const router = new Router()
 
 router.get("/*", async ctx => {
   try {
@@ -18,22 +19,22 @@ router.get("/*", async ctx => {
       res: ctx.res,
       routes,
       assets,
-      // Anything else you add here will be made available
-      // within getInitialProps(ctx)
-      // e.g a redux store...
-      customThing: "thing."
-    });
-    ctx.body = html;
+      data: {
+        users: await knex.select().from('users'),
+        companies: await knex.select().from('companies'),
+      }
+    })
+    ctx.body = html
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-});
+})
 
 server
   .use(helmet())
   .use(statics(process.env.RAZZLE_PUBLIC_DIR))
   .use(bodyParser())
   .use(router.routes())
-  .use(router.allowedMethods());
+  .use(router.allowedMethods())
 
-export default server;
+export default server
