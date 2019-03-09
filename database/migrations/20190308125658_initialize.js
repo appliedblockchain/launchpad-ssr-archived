@@ -31,6 +31,7 @@ exports.up = async knex => {
   })
 
   return
+  // we don't need this in the sample app
 
   await knex.schema.createTable("events", t => {
     t.increments("id").primary()
