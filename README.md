@@ -2,21 +2,21 @@
 
 ### Install
 
-    npm install
+    yarn install
 
 ### Database
 
 You can use local postgres or use the provided docker container, just run this:
 
-    npm run db:run
+    yarn run db:run
 
 ### Prepare and Seed Database
 
-    npm run db:rebuild
+    yarn run db:rebuild
 
 ### Run
 
-    npm run start
+    yarn run start
     
     
 Visit http://localhost:3000
