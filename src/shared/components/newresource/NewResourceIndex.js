@@ -10,7 +10,7 @@ class NewResourceIndex extends Component {
 
   resource(collection) {
     return (
-      collection.map((user) => (
+      collection.map((resource) => (
         <li key={`resource-${resource.id}`}>{resource.name}</li>
       ))
     )
@@ -25,11 +25,10 @@ class NewResourceIndex extends Component {
           this.resource(this.props.newResource)
         }
       </li>
-
       <p>...</p>
       <p>back to the <a href="/">Home page</a></p>
     </div>)
   }
 }
 
-export default NewResource
+export default NewResourceIndex

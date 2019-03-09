@@ -39,8 +39,6 @@ class About extends Component {
           this.companies(this.props.companies)
         }
       </li>
-      <p>...</p>
-      <p>back to the <a href="/">Home page</a></p>
     </div>)
   }
 }

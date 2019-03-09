@@ -11,10 +11,8 @@ class Home extends Component {
       <div className="Home Page">
         <Header />
         <p className="intro">
-          To get started, edit <code>src/Home.js</code> or{' '}
-          <code>src/About.js</code> and save to reload.
+          To get started, view <a href="https://github.com/appliedblockchain/base-ssr-app/tree/master/src/shared/components">this directory, where all the components reside</a>
         </p>
-        <p>Check out the <a href="/about">About page</a></p>
       </div>
     )
   }

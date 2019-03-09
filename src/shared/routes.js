@@ -4,10 +4,12 @@ import { asyncComponent } from '@jaredpalmer/after'
 
 const placeholder = () => (<div>...LOADING...</div>)
 
-const route = (path, component) => {
+const route = (path, component, options) => {
+  let exact = true
+  if (options && !options.exact) exact = false
   return {
     path: path,
-    exact: true,
+    exact: exact,
     component: asyncComponent({
       loader: () => import(`./components/${component}`),
       Placeholder: () => placeholder,
@@ -17,5 +19,11 @@ const route = (path, component) => {
 
 export default [
   route("/", "home/Home"),
+  route("/about", "about/About"),
+  route("/users", "users/Users"),
+  route("/companies", "companies/Companies"),
+  route("/newresource", "newresource/NewResourceIndex"),
+  route("/newresource/new", "newresource/NewResourceNew"),
+  // route("/newresource/:id/edit", "newresource/NewResourceEdit", { exact: false }),
   route("/about", "about/About"),
 ]
