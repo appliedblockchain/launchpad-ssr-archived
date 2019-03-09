@@ -22,6 +22,7 @@ router.get("/*", async ctx => {
       data: {
         users: await knex.select().from('users'),
         companies: await knex.select().from('companies'),
+        newResource: await knex.select().from('newresource'),
       }
     })
     ctx.body = html

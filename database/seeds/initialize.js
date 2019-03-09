@@ -1,8 +1,9 @@
 exports.seed = async knex => {
-  // Deletes ALL existing entries
+
   await knex('users').del()
 
-  // Inserts seed entries
+  // ---
+
   await knex('users').insert([
     { email: 'tgomes@appliedblockchain.com', name: 'tgomes', password: '*1337*' },
     { email: 'francesco@appliedblockchain.com', name: 'makevoid', password: 'qwerty' },
@@ -15,4 +16,11 @@ exports.seed = async knex => {
     { name: 'blockstream' },
     { name: 'paritytech' },
   ])
+
+  await knex('newresource').insert([
+    { name: 'resource entry 1' },
+    { name: 'resource entry 2' },
+    { name: 'resource entry 3' },
+  ])
+
 }
