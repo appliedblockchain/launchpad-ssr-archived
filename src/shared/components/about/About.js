@@ -2,20 +2,47 @@ import React, { Component } from 'react'
 import Header from '../common/Header'
 
 class About extends Component {
+
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
     const { users, companies } = ctx.data
     return { users, companies }
   }
+
+  // mo ti diomostro un loop di React - looopare html, so 2020!
+
+  users(collection) {
+    return (
+      collection.map((user) => (
+        <li key={`user-${user.id}`}>{user.name}</li>
+      ))
+    )
+  }
+
+  companies(collection) {
+    return (
+      collection.map((company) => (
+        <li key={`org-${company.id}`}>{company.name}</li>
+      ))
+    )
+  }
+
   render() {
     return (<div className="About Page">
       <Header />
-      <p>User1: {this.props.users[0].name}</p>
-      <p>User2: {this.props.users[1].name}</p>
-      <p>...</p>
-      <p>Company1: {this.props.companies[0].name}</p>
-      <p>Company2: {this.props.companies[1].name}</p>
-      <p>...</p>
-      <p>back to the <a href="/">Home page</a></p>
+      <h1>Users</h1>
+      <li>
+        {
+          this.users(this.props.users)
+        }
+      </li>
+      <h1>Compz</h1>
+      <li>
+        {
+          this.companies(this.props.companies)
+        }
+      </li>
+      // <p>...</p>
+      // <p>back to the <a href="/">Home page</a></p>
     </div>)
   }
 }
