@@ -25,6 +25,7 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
+    "@appliedblockchain/eslint-config": "^2.6.0",
     "nodemon": "^1.18.10"
   }
 }

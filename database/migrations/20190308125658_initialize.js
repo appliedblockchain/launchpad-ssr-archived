@@ -41,7 +41,6 @@ exports.up = async knex => {
     t.timestamp("start")
     t.timestamp("ends")
     t.string("notes")
-    t.string("notes")
     t.json("guests")
       .references("id")
       .inTable("users")
