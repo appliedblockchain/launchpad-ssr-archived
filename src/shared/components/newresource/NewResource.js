@@ -4,22 +4,14 @@ import Header from '../common/Header'
 class NewResourceIndex extends Component {
 
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    const { users, companies } = ctx.data
-    return { users, companies }
+    const { users, companies, newResource } = ctx.data
+    return { users, companies, newResource }
   }
 
-  users(collection) {
+  resource(collection) {
     return (
       collection.map((user) => (
-        <li key={`user-${user.id}`}>{user.name}</li>
-      ))
-    )
-  }
-
-  companies(collection) {
-    return (
-      collection.map((company) => (
-        <li key={`org-${company.id}`}>{company.name}</li>
+        <li key={`resource-${resource.id}`}>{resource.name}</li>
       ))
     )
   }
@@ -27,22 +19,17 @@ class NewResourceIndex extends Component {
   render() {
     return (<div className="About Page">
       <Header />
-      <h1>Users</h1>
+      <h1>Resource</h1>
       <li>
         {
-          this.users(this.props.users)
+          this.resource(this.props.newResource)
         }
       </li>
-      <h1>Compz</h1>
-      <li>
-        {
-          this.companies(this.props.companies)
-        }
-      </li>
-      // <p>...</p>
-      // <p>back to the <a href="/">Home page</a></p>
+
+      <p>...</p>
+      <p>back to the <a href="/">Home page</a></p>
     </div>)
   }
 }
 
-export default About
+export default NewResource
