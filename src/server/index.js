@@ -1,28 +1,30 @@
-import Koa from "koa"
-import Router from "koa-router"
-import statics from "koa-static"
-import helmet from "koa-helmet"
-import bodyParser from "koa-bodyparser"
-import { render } from "@jaredpalmer/after"
-import routes from "../shared/routes"
-import knex from "./knex"
+import Koa from 'koa'
+import Router from 'koa-router'
+import statics from 'koa-static'
+import helmet from 'koa-helmet'
+import bodyParser from 'koa-bodyparser'
+import { render } from '@jaredpalmer/after'
+import routes from '../shared/routes'
+import Document from '../Document'
+import knex from './knex'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
 const server = new Koa()
 const router = new Router()
 
-router.get("/*", async ctx => {
+router.get('/*', async ctx => {
   try {
     const html = await render({
       req: ctx.req,
       res: ctx.res,
+      document: Document,
       routes,
       assets,
       data: {
         users: await knex.select().from('users'),
         companies: await knex.select().from('companies'),
-        newResource: await knex.select().from('newresource'),
+        newResource: await knex.select().from('newresource')
       }
     })
     ctx.body = html
