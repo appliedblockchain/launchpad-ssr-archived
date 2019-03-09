@@ -12,6 +12,12 @@ exports.up = async knex => {
     t.timestamps(false, true)
   })
 
+  await knex.schema.createTable("newresource", t => {
+    t.increments("id").primary()
+    t.string("name").notNullable()
+    t.timestamps(false, true)
+  })
+
   await knex.schema.createTable("users", t => {
     t.increments("id").primary()
     t.string("name")
@@ -30,6 +36,7 @@ exports.up = async knex => {
     t.timestamps(false, true)
   })
 
+<<<<<<< HEAD
   return
   // we don't need this in the sample app
 
@@ -79,6 +86,8 @@ exports.up = async knex => {
     t.enu('status',['incoming, delayed']).defaultTo('incomming')
     t.timestamp(false, true)
   })
+=======
+>>>>>>> 976ddd06a9cad4c9a96b7e7210f8b88e229c446f
 }
 
 exports.down = async knex => {
