@@ -28,6 +28,3 @@ class Header extends Component {
 }
 
 export default Header
-
-// TODO: setup and use 'react-helmet'
-// react-helmet will take care of injecting the <link/> tag and customize the app title to something other than "Welcome to the Afterparty" ^^ - TT
