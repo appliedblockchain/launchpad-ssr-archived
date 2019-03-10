@@ -3,9 +3,9 @@ import Header from '../common/Header'
 
 class About extends Component {
 
-  static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    const { users, companies } = ctx.data
-    return { users, companies }
+  static async getInitialProps({ ...ctx }) {
+    const { users, companies, myResource } = ctx.data
+    return { users, companies, myResource }
   }
 
   users(collection) {
@@ -24,21 +24,36 @@ class About extends Component {
     )
   }
 
+  myResources(collection) {
+    return (
+      collection.map((resource) => (
+        <li key={`org-${resource.id}`}>{resource.name}</li>
+      ))
+    )
+  }
+
   render() {
+    const users = this.props.users
+    const companies = this.props.companies
+    const resources = this.props.myResource
+
     return (<div className="About Page">
       <Header />
-      <h1>Users</h1>
-      <li>
-        {
-          this.users(this.props.users)
-        }
-      </li>
-      <h1>Compz</h1>
-      <li>
-        {
-          this.companies(this.props.companies)
-        }
-      </li>
+      <h1>About</h1>
+      <section className="content">
+        <h1>Users ({users.length})</h1>
+        <ul>
+          { this.users(users) }
+        </ul>
+        <h1>Companies ({companies.length})</h1>
+        <ul>
+          { this.companies(companies) }
+        </ul>
+        <h1>Resources ({resources.length})</h1>
+        <ul>
+          { this.myResources(resources) }
+        </ul>
+      </section>
     </div>)
   }
 }

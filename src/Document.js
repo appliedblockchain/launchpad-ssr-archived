@@ -20,15 +20,13 @@ class Document extends React.Component {
 
     const htmlAttrs = helmet.htmlAttributes.toComponent()
     const bodyAttrs = helmet.bodyAttributes.toComponent()
-    console.log('htmlAttrs', htmlAttrs)
-    console.log('bodyAttrs', bodyAttrs)
 
     return (
       <html {...htmlAttrs}>
         <head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta charSet="utf-8" />
-          <title>{`Welcome - ${this.capitalize(activePage)}`}</title>
+          <title>Welcome to SSR React</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {helmet.title.toComponent()}
           {helmet.meta.toComponent()}

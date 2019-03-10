@@ -1,6 +1,8 @@
 exports.seed = async knex => {
 
   await knex('users').del()
+  await knex('companies').del()
+  await knex('myresource').del()
 
   // ---
 
@@ -14,13 +16,13 @@ exports.seed = async knex => {
     { name: 'applied blockchain' },
     { name: 'ethdev' },
     { name: 'blockstream' },
-    { name: 'paritytech' },
+    { name: 'paritytech' }
   ])
 
-  await knex('newresource').insert([
+  await knex('myresource').insert([
     { name: 'resource entry 1' },
     { name: 'resource entry 2' },
-    { name: 'resource entry 3' },
+    { name: 'resource entry 3' }
   ])
 
 }

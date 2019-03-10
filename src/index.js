@@ -1,6 +1,6 @@
-import http from "http"
+import http from 'http'
 
-let app = require("./server").default
+const app = require('./server').default
 
 let currentHandler = app.callback()
 const server = http.createServer(currentHandler)
@@ -10,19 +10,19 @@ server.listen(process.env.PORT || 3000, error => {
     console.log(error)
   }
 
-  console.log("🚀 Server Started!")
+  console.log('🚀 Server Started!')
 })
 
 if (module.hot) {
-  console.log("✅ Server-side HMR Enabled!")
+  console.log('✅ Server-side HMR Enabled!')
 
-  module.hot.accept("./server", () => {
-    console.log("🔁 HMR Reloading `./server`...")
+  module.hot.accept('./server', () => {
+    console.log('🔁 HMR Reloading `./server`...')
 
     try {
-      const newHandler = require("./server").default.callback()
-      server.removeListener("request", currentHandler)
-      server.on("request", newHandler)
+      const newHandler = require('./server').default.callback()
+      server.removeListener('request', currentHandler)
+      server.on('request', newHandler)
       currentHandler = newHandler
     } catch (error) {
       console.error(error)

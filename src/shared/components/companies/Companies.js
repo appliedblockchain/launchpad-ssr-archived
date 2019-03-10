@@ -6,8 +6,10 @@ class Companies extends Component {
   render() {
     return (
       <div>
-        <Header />  
-        companies...
+        <Header />
+        <section className="content">
+          companies...
+        </section>
       </div>
     )
   }
