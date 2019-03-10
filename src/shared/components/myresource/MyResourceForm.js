@@ -9,11 +9,11 @@ class MyResourceForm extends Component {
     const name = resource && resource.name
     return (
       <div>
-        <label for="resource-name">Name:</label>
-        <div class="s7"/>
+        <label htmlFor="resource-name">Name:</label>
+        <div className="s7" />
         <input id="resource-name" type="text" name="name" value={name} />
-        <label for="resource-short-desc">Short Description:</label>
-        <div class="s7"/>
+        <label htmlFor="resource-short-desc">Short Description:</label>
+        <div className="s7" />
         <input id="resource-short-desc" type="text" name="short-desc" />
       </div>
     )

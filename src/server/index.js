@@ -1,10 +1,10 @@
-import Koa from "koa"
-import Router from "koa-router"
-import statics from "koa-static"
-import helmet from "koa-helmet"
-import bodyParser from "koa-bodyparser"
-import routes from "../shared/routes"
-import knex from "./knex"
+import Koa from 'koa'
+import Router from 'koa-router'
+import statics from 'koa-static'
+import helmet from 'koa-helmet'
+import bodyParser from 'koa-bodyparser'
+import routes from '../shared/routes'
+import knex from './knex'
 import logger from 'koa-logger'
 
 const server = new Koa()
@@ -17,12 +17,12 @@ import myResourceDelete from './routes/post.myResource.delete'
 
 // main routes
 
-router.post("/myresource", myResourceCreate)
+router.post('/myresource', myResourceCreate)
 
-router.post("/myresource/*/update", myResourceUpdate) // put/patch ?
-router.post("/myresource/*/delete", myResourceDelete)
+router.post('/myresource/*/update', myResourceUpdate) // put/patch ?
+router.post('/myresource/*/delete', myResourceDelete)
 
-router.get("/*", getRoute)
+router.get('/*', getRoute)
 
 // application server
 

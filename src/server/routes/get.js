@@ -1,9 +1,8 @@
-import routes from "../../shared/routes"
+import routes from '../../shared/routes'
 import selectResource from '../utils/db/selectResource'
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
-import { render } from "@jaredpalmer/after"
+import { render } from '@jaredpalmer/after'
 import Document from '../../Document'
-
 
 const getRoute = async (ctx) => {
   try {
@@ -16,7 +15,7 @@ const getRoute = async (ctx) => {
       data: {
         users: await selectResource('users'),
         companies: await selectResource('companies'),
-        myResource: await selectResource('myresource'),
+        myResource: await selectResource('myresource')
       }
     })
     ctx.body = html

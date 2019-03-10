@@ -5,7 +5,7 @@ import MyResourceForm from './MyResourceForm'
 class MyResourceEdit extends Component {
 
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    const { myResource, params } = ctx.data
+    const { myResource } = ctx.data
     return { myResource }
   }
 
@@ -20,19 +20,19 @@ class MyResourceEdit extends Component {
 
   render() {
     const params = this.props.match.params
-    console.log("params", params)
+    console.log('params', params)
     const resources = this.props.myResource
     let resource = resources.filter((res) => {
       return res.id == Number(params.id)
     })
     resource = resource[0]
-    console.log("resource:", resource)
+    console.log('resource:', resource)
 
     return (<div className="MyResource MyResourceEdit Page">
       <Header />
       <h1>Edit resource - name: "{resource.name}" - (id: {resource.id})</h1>
       <form method="post" action={`/myresource/${resource.id}/update`}>
-      <input type="hidden" name="_method" value="put" />
+        <input type="hidden" name="_method" value="put" />
         <MyResourceForm resource={resource} />
         <input type="submit" value="Update" />
       </form>
