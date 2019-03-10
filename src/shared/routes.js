@@ -24,6 +24,6 @@ export default [
   route("/companies", "companies/Companies"),
   route("/newresource", "newresource/NewResourceIndex"),
   route("/newresource/new", "newresource/NewResourceNew"),
-  route("/newresource/1/edit", "newresource/NewResourceEdit", { exact: false }),
+  route("/newresource/:id/edit", "newresource/NewResourceEdit", { exact: false }),
   route("/about", "about/About"),
 ]

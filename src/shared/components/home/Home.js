@@ -3,7 +3,7 @@ import Header from '../common/Header'
 
 class Home extends Component {
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    return { whatever: 'stuff' }
+    return { homePage: true }
   }
 
   render() {

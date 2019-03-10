@@ -15,7 +15,6 @@ const newResourceDelete = async (ctx) => {
   let resource = await findResource('newresource', id)
   resource = resource[0]
   let count = await resourcesCount()
-  console.log(`Resource (${JSON.stringify(resource)})`)
   console.log(`Resources count (${count})`)
   console.log("Delete resource - id:", id)
   await deleteResource('newresource', resource)

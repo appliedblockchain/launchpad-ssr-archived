@@ -11,7 +11,7 @@ class NewResourceIndex extends Component {
   deleteBtn(resourceId) {
     return (
       <form method="post" action={`/newresource/${resourceId}/delete`} className="del-button">
-        <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="_method" value="delete" />
         <input type="hidden" name="id" value={resourceId} />
         <input type="submit" value="x" />
       </form>
@@ -19,11 +19,12 @@ class NewResourceIndex extends Component {
   }
 
   resource(collection) {
-    return (
-      collection.map((resource) => (
-        <li key={`resource-${resource.id}`}>{resource.name} {this.deleteBtn(resource.id)}</li>
-      ))
-    )
+    return collection.map((resource) => (
+      <li key={`resource-${resource.id}`}>
+        <a href={`/newResource/${resource.id}/edit`}>{resource.name}</a>
+        {this.deleteBtn(resource.id)}
+      </li>
+    ))
   }
 
   render() {
