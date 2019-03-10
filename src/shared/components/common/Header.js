@@ -18,7 +18,7 @@ class Header extends Component {
         <a href="/">
           <div className="header">
             <img src="/img/react.svg" className="logo" alt="logo" />
-            <h2>Welcome to AB</h2>
+            <h2>Welcome to SSR React</h2>
           </div>
         </a>
         <Nav />
