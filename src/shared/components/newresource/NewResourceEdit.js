@@ -34,7 +34,7 @@ class NewResourceEdit extends Component {
       <form method="post" action={`/newresource/${resource.id}/update`}>
       <input type="hidden" name="_method" value="put" />
         <NewResourceForm resource={resource} />
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Update" />
       </form>
     </div>)
   }
