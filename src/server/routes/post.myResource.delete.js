@@ -14,12 +14,12 @@ const myResourceDelete = async (ctx) => {
   console.log("ID", id)
   let resource = await findResource('myresource', id)
   resource = resource[0]
-  let count = await resourcesCount()
+  let count = await resourcesCount('myresource')
   console.log(`Resources count (${count})`)
   console.log("Delete resource - id:", id)
   await deleteResource('myresource', resource)
   console.log("Resource Deleted!")
-  count = await resourcesCount()
+  count = await resourcesCount('myresource')
   console.log(`Resources count (${count}) - after delete`)
   ctx.redirect('/myresource')
 }

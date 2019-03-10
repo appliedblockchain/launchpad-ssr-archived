@@ -5,6 +5,7 @@ import helmet from "koa-helmet"
 import bodyParser from "koa-bodyparser"
 import routes from "../shared/routes"
 import knex from "./knex"
+import logger from 'koa-logger'
 
 const server = new Koa()
 const router = new Router()
@@ -29,6 +30,7 @@ server
   .use(helmet())
   .use(statics(process.env.RAZZLE_PUBLIC_DIR))
   .use(bodyParser())
+  .use(logger())
   .use(router.routes())
   .use(router.allowedMethods())
 
