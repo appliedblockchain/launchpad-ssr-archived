@@ -7,21 +7,21 @@ const deleteResource = async (resourceName, resource) => {
   return status
 }
 
-const newResourceDelete = async (ctx) => {
+const myResourceDelete = async (ctx) => {
   const urlParams = ctx.params
   const postParams = ctx.request.body
   const id = urlParams[0]
   console.log("ID", id)
-  let resource = await findResource('newresource', id)
+  let resource = await findResource('myresource', id)
   resource = resource[0]
   let count = await resourcesCount()
   console.log(`Resources count (${count})`)
   console.log("Delete resource - id:", id)
-  await deleteResource('newresource', resource)
+  await deleteResource('myresource', resource)
   console.log("Resource Deleted!")
   count = await resourcesCount()
   console.log(`Resources count (${count}) - after delete`)
-  ctx.redirect('/newresource')
+  ctx.redirect('/myresource')
 }
 
-export default newResourceDelete
+export default myResourceDelete

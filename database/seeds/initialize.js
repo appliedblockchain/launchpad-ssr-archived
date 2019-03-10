@@ -17,7 +17,7 @@ exports.seed = async knex => {
     { name: 'paritytech' },
   ])
 
-  await knex('newresource').insert([
+  await knex('myresource').insert([
     { name: 'resource entry 1' },
     { name: 'resource entry 2' },
     { name: 'resource entry 3' },

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import VSpace from '../utils/VSpace'
 // <Vspace s=100 />
 
-class NewResourceForm extends Component {
+class MyResourceForm extends Component {
 
   render() {
     const resource = this.props.resource
@@ -21,4 +21,4 @@ class NewResourceForm extends Component {
 
 }
 
-export default NewResourceForm
+export default MyResourceForm

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
-import NewResourceForm from './NewResourceForm'
+import MyResourceForm from './MyResourceForm'
 
-class NewResourceEdit extends Component {
+class MyResourceEdit extends Component {
 
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    const { newResource, params } = ctx.data
-    return { newResource }
+    const { myResource, params } = ctx.data
+    return { myResource }
   }
 
   resourceDetails(resource) {
@@ -21,23 +21,23 @@ class NewResourceEdit extends Component {
   render() {
     const params = this.props.match.params
     console.log("params", params)
-    const resources = this.props.newResource
+    const resources = this.props.myResource
     let resource = resources.filter((res) => {
       return res.id == Number(params.id)
     })
     resource = resource[0]
     console.log("resource:", resource)
 
-    return (<div className="NewResource NewResourceEdit Page">
+    return (<div className="MyResource MyResourceEdit Page">
       <Header />
       <h1>Edit resource - name: "{resource.name}" - (id: {resource.id})</h1>
-      <form method="post" action={`/newresource/${resource.id}/update`}>
+      <form method="post" action={`/myresource/${resource.id}/update`}>
       <input type="hidden" name="_method" value="put" />
-        <NewResourceForm resource={resource} />
+        <MyResourceForm resource={resource} />
         <input type="submit" value="Update" />
       </form>
     </div>)
   }
 }
 
-export default NewResourceEdit
+export default MyResourceEdit

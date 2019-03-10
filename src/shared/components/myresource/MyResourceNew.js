@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
-import NewResourceForm from './NewResourceForm'
+import MyResourceForm from './MyResourceForm'
 
-class NewResourceNew extends Component {
+class MyResourceNew extends Component {
 
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    const { newResource } = ctx.data
-    return { newResource }
+    const { myResource } = ctx.data
+    return { myResource }
   }
 
   render() {
-    const resources = this.props.newResource
+    const resources = this.props.myResource
 
     return (
-      <div className="NewResource NewResourceNew Page">
+      <div className="MyResource MyResourceNew Page">
         <Header />
         <h1>New resource</h1>
         <section className="content">
-          <form method="post" action="/newresource">
-            <NewResourceForm />
+          <form method="post" action="/myresource">
+            <MyResourceForm />
             <input type="submit" value="Create" />
           </form>
         </section>
@@ -27,4 +27,4 @@ class NewResourceNew extends Component {
   }
 }
 
-export default NewResourceNew
+export default MyResourceNew

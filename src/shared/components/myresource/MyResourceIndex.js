@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
 
-class NewResourceIndex extends Component {
+class MyResourceIndex extends Component {
 
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    const { users, companies, newResource } = ctx.data
-    return { users, companies, newResource }
+    const { users, companies, myResource } = ctx.data
+    return { users, companies, myResource }
   }
 
   deleteBtn(resourceId) {
     return (
-      <form method="post" action={`/newresource/${resourceId}/delete`} className="del-button">
+      <form method="post" action={`/myresource/${resourceId}/delete`} className="del-button">
         <input type="hidden" name="_method" value="delete" />
         <input type="hidden" name="id" value={resourceId} />
         <input type="submit" value="x" />
@@ -21,7 +21,7 @@ class NewResourceIndex extends Component {
   resource(collection) {
     return collection.map((resource) => (
       <li key={`resource-${resource.id}`}>
-        <a href={`/newResource/${resource.id}/edit`}>{resource.name}</a>
+        <a href={`/myResource/${resource.id}/edit`}>{resource.name}</a>
         {this.deleteBtn(resource.id)}
       </li>
     ))
@@ -33,11 +33,11 @@ class NewResourceIndex extends Component {
       <h1>Resource</h1>
       <ul>
         {
-          this.resource(this.props.newResource)
+          this.resource(this.props.myResource)
         }
       </ul>
     </div>)
   }
 }
 
-export default NewResourceIndex
+export default MyResourceIndex

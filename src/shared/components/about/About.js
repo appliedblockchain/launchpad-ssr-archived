@@ -4,8 +4,8 @@ import Header from '../common/Header'
 class About extends Component {
 
   static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    const { users, companies, newResource } = ctx.data
-    return { users, companies, newResource }
+    const { users, companies, myResource } = ctx.data
+    return { users, companies, myResource }
   }
 
   users(collection) {
@@ -35,7 +35,7 @@ class About extends Component {
   render() {
     const users = this.props.users
     const companies = this.props.companies
-    const resources = this.props.newResource
+    const resources = this.props.myResource
 
     return (<div className="About Page">
       <Header />

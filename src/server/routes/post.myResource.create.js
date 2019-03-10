@@ -1,13 +1,13 @@
 import knex from "../knex"
 import resourcesCount from "../utils/db/resourcesCount"
 
-const createNewResource = (params) => {
-  return knex('newresource').insert({
+const createMyResource = (params) => {
+  return knex('myresource').insert({
     name: params.name
   })
 }
 
-const newResourceCreate = async (ctx) => {
+const myResourceCreate = async (ctx) => {
   let count = await resourcesCount()
   const postParams = ctx.request.body
   const params = {
@@ -16,11 +16,11 @@ const newResourceCreate = async (ctx) => {
   }
   console.log("Create resource - params:", params)
   console.log(`Resources count (${count})`)
-  await createNewResource(params)
+  await createMyResource(params)
   console.log("Resource Created!")
   count = await resourcesCount()
   console.log(`Resources count (${count}) - after create`)
-  ctx.redirect('/newresource')
+  ctx.redirect('/myresource')
 }
 
-export default newResourceCreate
+export default myResourceCreate

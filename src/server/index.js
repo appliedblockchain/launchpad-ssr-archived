@@ -10,16 +10,16 @@ const server = new Koa()
 const router = new Router()
 
 import getRoute from './routes/get'
-import newResourceCreate from './routes/post.newResource.create'
-import newResourceUpdate from './routes/post.newResource.update'
-import newResourceDelete from './routes/post.newResource.delete'
+import myResourceCreate from './routes/post.myResource.create'
+import myResourceUpdate from './routes/post.myResource.update'
+import myResourceDelete from './routes/post.myResource.delete'
 
 // main routes
 
-router.post("/newresource", newResourceCreate)
+router.post("/myresource", myResourceCreate)
 
-router.post("/newresource/*/update", newResourceUpdate) // put/patch ?
-router.post("/newresource/*/delete", newResourceDelete)
+router.post("/myresource/*/update", myResourceUpdate) // put/patch ?
+router.post("/myresource/*/delete", myResourceDelete)
 
 router.get("/*", getRoute)
 

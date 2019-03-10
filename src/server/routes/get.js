@@ -16,7 +16,7 @@ const getRoute = async (ctx) => {
       data: {
         users: await selectResource('users'),
         companies: await selectResource('companies'),
-        newResource: await selectResource('newresource'),
+        myResource: await selectResource('myresource'),
       }
     })
     ctx.body = html
