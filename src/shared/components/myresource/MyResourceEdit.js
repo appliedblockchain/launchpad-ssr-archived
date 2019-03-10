@@ -30,7 +30,8 @@ class MyResourceEdit extends Component {
 
     return (<div className="MyResource MyResourceEdit Page">
       <Header />
-      <h1>Edit resource - name: "{resource.name}" - (id: {resource.id})</h1>
+      <h1>Edit resource</h1>
+      <h3>(id: {resource.id})</h3>
       <form method="post" action={`/myresource/${resource.id}/update`}>
         <input type="hidden" name="_method" value="put" />
         <MyResourceForm resource={resource} />

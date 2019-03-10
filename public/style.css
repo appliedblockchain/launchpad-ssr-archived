@@ -36,7 +36,6 @@ ul li {
   list-style-type: none;
 }
 
-
 /* generic style */
 
 .header {
@@ -92,13 +91,12 @@ ul li {
   background: #FFF;
 }
 
-
 /* nav style */
 
 .nav.nav-main li {
   display: inline-block;
   font-size: 0.6em;
-  margin: 0 0 20px 0;
+  margin: 0 10px 5px 0;
 }
 
 /* form style */
@@ -141,8 +139,10 @@ form.del-button input[type="submit"]:hover {
 
 /* pages style */
 
+/* pages style - myresource */
 
 /* pages style - companies */
+
 /* pages style - users */
 
 /* pages style - about (sample page) */

@@ -6,8 +6,8 @@ class Nav extends Component {
     return (
       <ul className="nav nav-main">
         <li><a href="/">Home</a></li>
-        <li><a href="/myresource">MyResource</a></li>
-        <li><a href="/myresource/new">MyResource New</a></li>
+        <li><a href="/myresource">My Resource list</a></li>
+        <li><a href="/myresource/new">New MyResource</a></li>
         <li><a href="/about">About</a></li>
       </ul>
     )
