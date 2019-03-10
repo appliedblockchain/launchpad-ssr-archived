@@ -85,9 +85,10 @@ ul li {
   background: #eee;
   border: 2px solid #DDD;
   border-radius: 8px;
+  cursor: pointer;
 }
 
-.button:hover, .nav li:hover {
+.button:hover, .nav li:hover, form:not(.del-button) input[type="submit"]:hover {
   background: #FFF;
 }
 

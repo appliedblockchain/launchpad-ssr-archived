@@ -10,9 +10,9 @@ class MyResourceForm extends Component {
         <label htmlFor="resource-name">Name:</label>
         <div className="s7" />
         <input id="resource-name" type="text" name="name" value={name} />
-        <label htmlFor="resource-short-desc">Short Description:</label>
+        <label htmlFor="resource-short-desc">Short description:</label>
         <div className="s7" />
-        <input id="resource-short-desc" type="text" name="short-desc" />
+        <input id="resource-short-desc" type="text" name="short-desc" value="..." />
       </div>
     )
   }
