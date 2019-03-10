@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../common/Header'
 
 class Home extends Component {
-  static async getInitialProps({ req, res, match, history, location, ...ctx }) {
+  static async getInitialProps() {
     return { homePage: true }
   }
 

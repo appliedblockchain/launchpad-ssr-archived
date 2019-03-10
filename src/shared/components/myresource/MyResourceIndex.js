@@ -3,7 +3,7 @@ import Header from '../common/Header'
 
 class MyResourceIndex extends Component {
 
-  static async getInitialProps({ req, res, match, history, location, ...ctx }) {
+  static async getInitialProps({ ...ctx }) {
     const { users, companies, myResource } = ctx.data
     return { users, companies, myResource }
   }

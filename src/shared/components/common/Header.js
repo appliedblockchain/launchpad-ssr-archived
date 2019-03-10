@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import Nav from '../nav/Nav'
 
 class Header extends Component {
-  static async getInitialProps({ req, res, match, history, location, ...ctx }) {
+  static async getInitialProps({ ...ctx }) {
     const { users, companies } = ctx.data
     return { users, companies }
   }

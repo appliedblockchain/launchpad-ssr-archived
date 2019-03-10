@@ -3,8 +3,6 @@ import Router from 'koa-router'
 import statics from 'koa-static'
 import helmet from 'koa-helmet'
 import bodyParser from 'koa-bodyparser'
-import routes from '../shared/routes'
-import knex from './knex'
 import logger from 'koa-logger'
 
 const server = new Koa()

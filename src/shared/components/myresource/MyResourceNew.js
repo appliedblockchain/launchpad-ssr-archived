@@ -4,7 +4,7 @@ import MyResourceForm from './MyResourceForm'
 
 class MyResourceNew extends Component {
 
-  static async getInitialProps({ req, res, match, history, location, ...ctx }) {
+  static async getInitialProps({ ...ctx }) {
     const { myResource } = ctx.data
     return { myResource }
   }

@@ -9,7 +9,6 @@ const deleteResource = async (resourceName, resource) => {
 
 const myResourceDelete = async (ctx) => {
   const urlParams = ctx.params
-  const postParams = ctx.request.body
   const id = urlParams[0]
   console.log('ID', id)
   let resource = await findResource('myresource', id)

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import VSpace from '../utils/VSpace'
-// <Vspace s=100 />
 
 class MyResourceForm extends Component {
 

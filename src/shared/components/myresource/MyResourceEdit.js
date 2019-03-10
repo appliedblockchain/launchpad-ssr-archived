@@ -4,7 +4,7 @@ import MyResourceForm from './MyResourceForm'
 
 class MyResourceEdit extends Component {
 
-  static async getInitialProps({ req, res, match, history, location, ...ctx }) {
+  static async getInitialProps({ ...ctx }) {
     const { myResource } = ctx.data
     return { myResource }
   }
@@ -23,7 +23,7 @@ class MyResourceEdit extends Component {
     console.log('params', params)
     const resources = this.props.myResource
     let resource = resources.filter((res) => {
-      return res.id == Number(params.id)
+      return res.id === Number(params.id)
     })
     resource = resource[0]
     console.log('resource:', resource)
