@@ -8,10 +8,20 @@ class NewResourceIndex extends Component {
     return { users, companies, newResource }
   }
 
+  deleteBtn(resourceId) {
+    return (
+      <form method="post" action={`/newresource/${resourceId}/delete`} className="del-button">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="id" value={resourceId} />
+        <input type="submit" value="x" />
+      </form>
+    )
+  }
+
   resource(collection) {
     return (
       collection.map((resource) => (
-        <li key={`resource-${resource.id}`}>{resource.name}</li>
+        <li key={`resource-${resource.id}`}>{resource.name} {this.deleteBtn(resource.id)}</li>
       ))
     )
   }
@@ -20,13 +30,11 @@ class NewResourceIndex extends Component {
     return (<div className="About Page">
       <Header />
       <h1>Resource</h1>
-      <li>
+      <ul>
         {
           this.resource(this.props.newResource)
         }
-      </li>
-      <p>...</p>
-      <p>back to the <a href="/">Home page</a></p>
+      </ul>
     </div>)
   }
 }

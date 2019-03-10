@@ -11,7 +11,7 @@ class NewResourceEdit extends Component {
 
   resourceDetails(resource) {
     return (<div>
-      <section class="details">
+      <section className="details">
         <h1>{resource.name}</h1>
         <p>this is a resource description lorem ipsum details antani</p>
       </section>
@@ -24,8 +24,10 @@ class NewResourceEdit extends Component {
     return (<div className="NewResource NewResourceEdit Page">
       <Header />
       <h1>Edit resource</h1>
-      <NewResourceForm />
-      <input type="submit" value="Edit" />
+      <form method="post" action="/newresource/{resource.id}">
+        <NewResourceForm />
+        <input type="submit" value="Edit" />
+      </form>
     </div>)
   }
 }

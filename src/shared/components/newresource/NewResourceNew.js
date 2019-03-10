@@ -16,8 +16,12 @@ class NewResourceNew extends Component {
       <div className="NewResource NewResourceNew Page">
         <Header />
         <h1>New resource</h1>
-        <NewResourceForm />
-        <input type="submit" value="Create" />
+        <section className="content">
+          <form method="post" action="/newresource">
+            <NewResourceForm />
+            <input type="submit" value="Create" />
+          </form>
+        </section>
       </div>
     )
   }

@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
+// import VSpace from '../utils/VSpace'
+// <Vspace s=100 />
 
 class NewResourceForm extends Component {
 
   render() {
     return (
-      <form action="antani.php.asd">
-        <input type="text" name="parameter1" />
-        <input type="text" name="parameter2" />
-      </form>
+      <div>
+        <label for="resource-name">Name:</label>
+        <div class="s7"/>
+        <input id="resource-name" type="text" name="name" />
+        <label for="resource-short-desc">Short Description:</label>
+        <div class="s7"/>
+        <input id="resource-short-desc" type="text" name="short-desc" />
+      </div>
     )
   }
 }

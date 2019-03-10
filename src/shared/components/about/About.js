@@ -9,10 +9,13 @@ class About extends Component {
   }
 
   users(collection) {
+    console.log("---")
+    const mapppz = collection.map((user) => (
+      <li key={`user-${user.id}`}>{user.name}</li>
+    ))
+    console.log(mapppz)
     return (
-      collection.map((user) => (
-        <li key={`user-${user.id}`}>{user.name}</li>
-      ))
+      mapppz
     )
   }
 
@@ -25,20 +28,22 @@ class About extends Component {
   }
 
   render() {
+    const users = this.props.users
+    const companies = this.props.companies
+
     return (<div className="About Page">
       <Header />
-      <h1>Users</h1>
-      <li>
-        {
-          this.users(this.props.users)
-        }
-      </li>
-      <h1>Compz</h1>
-      <li>
-        {
-          this.companies(this.props.companies)
-        }
-      </li>
+      <h1>About</h1>
+      <section className="content">
+        <h1>Users ({users.length})</h1>
+        <ul>
+          { this.users(users) }
+        </ul>
+        <h1>Companies ({companies.length})</h1>
+        <ul>
+          { this.companies(companies) }
+        </ul>
+      </section>
     </div>)
   }
 }
