@@ -1,8 +1,9 @@
 import routes from '../../shared/routes'
 import selectResource from '../utils/db/selectResource'
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 import { render } from '@jaredpalmer/after'
 import Document from '../../Document'
+
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
 const getRoute = async (ctx) => {
   try {

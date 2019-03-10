@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { asyncComponent } from '@jaredpalmer/after'
 
 const placeholder = () => (<div>...LOADING...</div>)
