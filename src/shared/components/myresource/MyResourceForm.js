@@ -7,12 +7,15 @@ class MyResourceForm extends Component {
     const name = resource && resource.name
     return (
       <div>
-        <label htmlFor="resource-name">Name:</label>
+        <label htmlFor="resource-name"><strong>Name:</strong></label>
         <div className="s7" />
         <input id="resource-name" type="text" name="name" value={name} />
-        <label htmlFor="resource-short-desc">Short description:</label>
+        <div className="s20" />
+        <label htmlFor="resource-short-desc">Description:</label>
         <div className="s7" />
-        <input id="resource-short-desc" type="text" name="short-desc" value="..." />
+        <textarea name="short-desc" id="resource-short-desc">
+
+        </textarea>
       </div>
     )
   }

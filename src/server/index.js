@@ -4,11 +4,6 @@ import statics from 'koa-static'
 import helmet from 'koa-helmet'
 import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
-// import redis from 'koa-redis'
-// WIP - sessions
-// 'koa-session' - tried - it's not very good
-// import session from 'koa-generic-session'
-// import redis from 'koa-redis'
 import session from 'koa-session2'
 import getRoute from './routes/get'
 import myResourceCreate from './routes/post.myResource.create'

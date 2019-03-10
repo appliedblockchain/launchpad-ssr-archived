@@ -32,6 +32,10 @@ a:hover {
   color: #88aacc;
 }
 
+ul {
+  margin: 20px 0 0 0;
+}
+
 ul li {
   list-style-type: none;
 }
@@ -81,18 +85,37 @@ ul li {
 /* button style */
 
 .button, .nav li, form:not(.del-button) input[type="submit"] {
-  padding: 8px 20px;
   background: #eee;
-  border: 2px solid #DDD;
+  border: 2px solid #BBB;
   border-radius: 8px;
   cursor: pointer;
 }
 
+
+.button, form:not(.del-button) input[type="submit"] {
+  padding: 8px 20px;
+}
+
 .button:hover, .nav li:hover, form:not(.del-button) input[type="submit"]:hover {
   background: #FFF;
+  border: 2px solid #999;
+}
+
+/* outlier */
+
+.nav.nav-main li a {
+  padding: 0 20px;
+  display: inline-block;
+  line-height: 3em;
+  color: #449922;
 }
 
 /* nav style */
+
+.nav.nav-main {
+  padding: 0;
+  font-size: 1.3em;
+}
 
 .nav.nav-main li {
   display: inline-block;
@@ -100,12 +123,21 @@ ul li {
   margin: 0 10px 5px 0;
 }
 
+.nav.nav-main li a:hover {
+  color: #227722;
+}
+
 /* form style */
 
-form input {
+form input, form textarea {
   display: block;
   padding: 5px 8px 5px 12px;
   margin-bottom: 10px;
+}
+
+form textarea {
+  height: 200px;
+  width: 96%;
 }
 
 form:not(.del-button) input[type="submit"] {
@@ -136,6 +168,12 @@ form.del-button input[type="submit"] {
 
 form.del-button input[type="submit"]:hover {
   background: #CCC;
+}
+
+/* forms customization */
+
+.MyResourceNew form input, .MyResourceEdit form input {
+  width: 96%;
 }
 
 /* pages style */

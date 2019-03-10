@@ -15,7 +15,7 @@ class MyResourceNew extends Component {
     return (
       <div className="MyResource MyResourceNew Page">
         <Header />
-        <h1>New resource</h1>
+        <h1>New Resource</h1>
         <section className="content">
           <form method="post" action="/myresource">
             <MyResourceForm />

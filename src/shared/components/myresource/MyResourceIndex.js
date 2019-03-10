@@ -30,12 +30,15 @@ class MyResourceIndex extends Component {
   render() {
     return (<div className="About Page">
       <Header />
-      <h1>Resource</h1>
-      <ul>
-        {
-          this.resource(this.props.myResource)
-        }
-      </ul>
+      <h1>My Resource</h1>
+      <section className="content">
+        <p>"e.g. Blogposts or todolist"</p>
+        <ul>
+          {
+            this.resource(this.props.myResource)
+          }
+        </ul>
+      </section>
     </div>)
   }
 }
