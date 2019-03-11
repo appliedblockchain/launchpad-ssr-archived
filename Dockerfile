@@ -10,14 +10,17 @@ WORKDIR /api
 ARG NPM_TOKEN
 RUN echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
 
+COPY ./.eslint* /api/
 COPY ./package* /api/
 COPY ./yarn.lock /api/
 COPY ./.eslintrc.json /api/
 # RUN npm install --only=production
-RUN yarn install --production
+RUN yarn install
 
 COPY ./ /api
 COPY ./.eslintignore /api
+
+RUN ls -al
 
 RUN yarn run build
 
@@ -27,6 +30,7 @@ FROM node:10.15-alpine
 RUN apk --update --no-cache add alpine-sdk git python openssl curl bash redis && \
   rm -rf /tmp/* /var/cache/apk/*
 
+COPY --from=builder /api/.eslintrc.json /api
 COPY --from=builder /api /api
 
 WORKDIR /api
