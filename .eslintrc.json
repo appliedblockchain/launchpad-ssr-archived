@@ -1,4 +1,5 @@
 {
+  "extends": "@appliedblockchain/eslint-config/react",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
