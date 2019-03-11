@@ -19,7 +19,8 @@ const getRoute = async (ctx) => {
         myResource: await selectResource('myresource')
       }
     })
-    ctx.body = html
+    const context = ctx
+    context.body = html
   } catch (error) {
     console.error(error)
   }
