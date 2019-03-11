@@ -47,6 +47,14 @@ ul li {
   /* rounded design */
 }
 
+.Page section.content {
+  padding-bottom: 30px;
+}
+
+.content > form {
+  margin: 26px 0;
+}
+
 .header img {
   background: #FFF;
   border-radius: 50px;
@@ -67,11 +75,10 @@ ul li {
   margin: 0 3%;
 }
 
-
 .Page .content {
   margin: 15px 5px;
   background: #FFF;
-  padding: 20px;
+  padding: 3px 3%;
 }
 
 /* header style */
