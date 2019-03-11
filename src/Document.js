@@ -16,7 +16,7 @@ class Document extends React.Component {
   }
 
   render() {
-    const { helmet, assets, data, activePage } = this.props
+    const { helmet, assets, data } = this.props
 
     const htmlAttrs = helmet.htmlAttributes.toComponent()
     const bodyAttrs = helmet.bodyAttributes.toComponent()

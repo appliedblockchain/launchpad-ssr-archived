@@ -12,7 +12,7 @@ class NotFoundErrorPage extends Component {
           <h4>404</h4>
 
           <p className="intro">
-            This page is not present or the resouce related to this page wasn't loaded. 
+            This page is not present or the resouce related to this page was not loaded.
           </p>
         </section>
       </div>

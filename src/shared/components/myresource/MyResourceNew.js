@@ -10,8 +10,6 @@ class MyResourceNew extends Component {
   }
 
   render() {
-    const resources = this.props.myResource
-
     return (
       <div className="MyResource MyResourceNew Page">
         <Header />

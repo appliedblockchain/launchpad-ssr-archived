@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Header from '../common/Header'
 
 class Nav extends Component {
   render() {

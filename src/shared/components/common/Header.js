@@ -8,7 +8,7 @@ class Header extends Component {
     return { users, companies }
   }
   render() {
-    const logoImg = "ab.jpg"
+    const logoImg = 'ab.jpg'
     // const logoImg = `react.svg`
     const logoImgPath = `/img/${logoImg}`
     return (

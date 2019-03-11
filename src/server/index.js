@@ -19,13 +19,12 @@ const SESSION_SECRET_KEY = '85889f1d6f515a578e0e52f443931eb9'
 const server = new Koa()
 const router = new Router()
 
-const auth = async (ctx, next) => {
-  // ctx.session.userId = 1
-  // TODO: set session with koa-session2 api
-
-  // console.log("Auth - userId:", this.session.userId)
-  // await next()
-}
+// const auth = async (ctx, next) => {
+//   ctx.session.userId = 1
+//
+//   console.log("Auth - userId:", ctx.session.userId)
+//   await next()
+// }
 
 // main routes
 
@@ -41,9 +40,9 @@ router.get('/*', getRoute)
 server
   .use(helmet())
   .use(statics(process.env.RAZZLE_PUBLIC_DIR))
-  // .use(session({
-  //     key: SESSION_SECRET_KEY
-  // }))
+  .use(session({
+    key: SESSION_SECRET_KEY
+  }))
   .use(bodyParser())
   .use(logger())
   // .use(auth())

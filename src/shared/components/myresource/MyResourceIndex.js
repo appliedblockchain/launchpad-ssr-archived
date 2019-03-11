@@ -32,7 +32,7 @@ class MyResourceIndex extends Component {
       <Header />
       <h1>My Resource</h1>
       <section className="content">
-        <p>"e.g. Blogposts or todolist"</p>
+        <p>e.g. Blogposts or todolist</p>
         <ul>
           {
             this.resource(this.props.myResource)

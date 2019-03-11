@@ -4,7 +4,12 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-        "jsx": true
+      "jsx": true
     }
+  },
+  "rules": {
+    "no-param-reassign": [2, { "props": false }],
+    "react/prefer-stateless-function": "warn",
+    "react/prop-types": "warn"
   }
 }
