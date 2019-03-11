@@ -11,7 +11,7 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "eslintConfig": {
-    "extends": "@appliedblockchain/eslint-config/react"
+    "extends": "@appliedblockchain/eslint-config/react",
   },
   "dependencies": {
     "@jaredpalmer/after": "latest",
@@ -31,7 +31,11 @@
   },
   "devDependencies": {
     "@appliedblockchain/eslint-config": "^2.6.0",
+    "csslint": "^1.0.5",
     "jest": "^24.3.1",
     "nodemon": "^1.18.10"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./test/spec-config.js"
   }
 }
