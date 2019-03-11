@@ -4,6 +4,10 @@ import { AfterRoot, AfterData } from '@jaredpalmer/after'
 class Document extends React.Component {
   static async getInitialProps({ assets, data, renderPage, match }) {
     const page = await renderPage()
+    if (!match) {
+      console.log('TODO: Render 404 page!')
+      throw new Error("404 not implemented yet!")
+    }
     return { assets, data, activePage: match.path, ...page }
   }
 

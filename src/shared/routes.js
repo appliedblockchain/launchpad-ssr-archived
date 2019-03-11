@@ -4,10 +4,7 @@ import { asyncComponent } from '@jaredpalmer/after'
 const placeholder = () => (<div>...LOADING...</div>)
 
 const route = (path, component, options) => {
-  let exact = true
-  if (options && !options.exact) {
-    exact = false
-  }
+  let exact = !(options && !options.exact)
   return {
     path: path,
     exact: exact,
@@ -20,6 +17,7 @@ const route = (path, component, options) => {
 
 export default [
   route('/', 'home/Home'),
+  route('/login', 'login/Login'),
   route('/about', 'about/About'),
   route('/users', 'users/Users'),
   route('/companies', 'companies/Companies'),
