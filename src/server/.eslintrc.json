@@ -1,5 +1,9 @@
 {
   "extends": "@appliedblockchain/eslint-config",
+  "globals": {
+    "def": true,
+    "subject": true
+  },
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
