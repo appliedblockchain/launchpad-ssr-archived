@@ -32,7 +32,9 @@ class Header extends Component {
             <div className="header-right right">
               { !currentUser ? this.loginButton() : this.loggedInMessage() }
             </div>
-            <img src={logoImgPath} className="logo" alt="logo" />
+            <a href="/">
+              <img src={logoImgPath} className="logo" alt="logo" />
+            </a>
             <h2>Welcome to SSR React</h2>
           </div>
         </a>
