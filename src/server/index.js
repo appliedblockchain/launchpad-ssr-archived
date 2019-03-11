@@ -14,7 +14,7 @@ import myResourceDelete from './routes/post.myResource.delete'
 // create a config file for this secret
 // next step - hook up kms (or vault-proxy) and use the vault url/hash
 //
-const SESSION_SECRET_KEY = "85889f1d6f515a578e0e52f443931eb9"
+const SESSION_SECRET_KEY = '85889f1d6f515a578e0e52f443931eb9'
 
 const server = new Koa()
 const router = new Router()
@@ -22,7 +22,7 @@ const router = new Router()
 const auth = async (ctx, next) => {
   // ctx.session.userId = 1
   // TODO: set session with koa-session2 api
-  
+
   // console.log("Auth - userId:", this.session.userId)
   // await next()
 }
