@@ -27,5 +27,5 @@ export default [
   route('/myresource/new', 'myresource/MyResourceNew'),
   route('/myresource/:id/edit', 'myresource/MyResourceEdit', { exact: false }),
   route('/about', 'about/About'),
-  route('/*', 'notFound/NotFound')
+  // route('/*', 'notFound/NotFound', { exact: false })
 ]

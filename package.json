@@ -31,6 +31,11 @@
   },
   "devDependencies": {
     "@appliedblockchain/eslint-config": "^2.6.0",
+    "csslint": "^1.0.5",
+    "jest": "^24.3.1",
     "nodemon": "^1.18.10"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./test/spec-config.js"
   }
 }
