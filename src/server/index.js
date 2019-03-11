@@ -16,26 +16,13 @@ import myResourceDelete from './routes/post.myResource.delete'
 //
 const SESSION_SECRET_KEY = "85889f1d6f515a578e0e52f443931eb9"
 
-
-// import koaGenericSession from 'koa-generic-session'
-// import redisStore from 'koa-redis'
-// const session = require('koa-generic-session')
-// const redisStore = require('koa-redis')
-// // npm i koa-generic-session-dynamodb // for dynamodb
-// keys???????
-// app.keys = ['keys', 'keykeys']
-// app.use(session({
-//   store: redis({
-//     host: "redis",
-//   })
-// }))
-
-
 const server = new Koa()
 const router = new Router()
 
 const auth = async (ctx, next) => {
   // ctx.session.userId = 1
+  // TODO: set session with koa-session2 api
+  
   // console.log("Auth - userId:", this.session.userId)
   // await next()
 }
