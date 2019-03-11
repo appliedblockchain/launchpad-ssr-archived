@@ -11,7 +11,7 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "eslintConfig": {
-    "extends": "@appliedblockchain/eslint-config/react",
+    "extends": "@appliedblockchain/eslint-config/react"
   },
   "dependencies": {
     "@jaredpalmer/after": "latest",
