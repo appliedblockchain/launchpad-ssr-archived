@@ -1,6 +1,6 @@
 import knex from '../knex'
 import resourcesCount from '../utils/db/resourcesCount'
-import findResource from '../utils/db/findResource'
+import findOne from '../utils/db/findOne'
 
 const deleteResource = async (resourceName, resource) => {
   const status = await knex(resourceName).where('id', resource.id).delete()
@@ -11,7 +11,7 @@ const myResourceDelete = async (ctx) => {
   const urlParams = ctx.params
   const id = urlParams[0]
   console.log('ID', id)
-  let resource = await findResource('myresource', id)
+  let resource = await findOne('myresource', id)
   resource = resource[0]
   let count = await resourcesCount('myresource')
   console.log(`Resources count (${count})`)

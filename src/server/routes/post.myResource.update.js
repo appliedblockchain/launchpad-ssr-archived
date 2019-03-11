@@ -1,5 +1,5 @@
 import knex from '../knex'
-import findResource from '../utils/db/findResource'
+import findOne from '../utils/db/findOne'
 
 const updateMyResource = (resource, id, params) => {
   const record = knex(resource).where('id', id).limit(1)
@@ -12,7 +12,7 @@ const myResourceUpdate = async (ctx) => {
   const urlParams = ctx.params
   const postParams = ctx.request.body
   const id = urlParams[0]
-  const resource = await findResource('myresource', id)
+  const resource = await findOne('myresource', id)
   console.log('id:', id)
   console.log('resource:', resource)
 
