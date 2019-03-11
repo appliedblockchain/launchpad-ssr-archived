@@ -8,16 +8,18 @@ class Header extends Component {
     return { users, companies }
   }
   render() {
+    const logoImg = "ab.jpg"
+    // const logoImg = `react.svg`
+    const logoImgPath = `/img/${logoImg}`
     return (
       <div>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>My Title</title>
           <link rel="stylesheet" href="/style.css" />
         </Helmet>
         <a href="/">
           <div className="header">
-            <img src="/img/react.svg" className="logo" alt="logo" />
+            <img src={logoImgPath} className="logo" alt="logo" />
             <h2>Welcome to SSR React</h2>
           </div>
         </a>
