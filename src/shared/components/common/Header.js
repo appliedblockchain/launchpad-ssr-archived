@@ -14,7 +14,6 @@ class Header extends Component {
     return (
       <div>
         <Helmet>
-          <meta charSet="utf-8" />
           <link rel="stylesheet" href="/style.css" />
         </Helmet>
         <a href="/">
