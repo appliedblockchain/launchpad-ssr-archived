@@ -12,6 +12,10 @@
 .s80{ height: 80px; }
 .s100{ height: 100px; }
 
+.right {
+  text-align: right;
+}
+
 /* base and reset */
 
 body, html {
@@ -101,6 +105,11 @@ ul li {
   }
 }
 
+.header-right {
+  position: absolute;
+  right: 20px;
+}
+
 /* button style */
 
 .button, .nav li, form:not(.del-button) input[type="submit"] {
@@ -110,7 +119,6 @@ ul li {
   cursor: pointer;
 }
 
-
 .button, form:not(.del-button) input[type="submit"] {
   padding: 8px 20px;
 }
@@ -118,6 +126,11 @@ ul li {
 .button:hover, .nav li:hover, form:not(.del-button) input[type="submit"]:hover {
   background: #FFF;
   border: 2px solid #999;
+}
+
+.button.btn-small {
+  font-size: 0.8em;
+  padding: 5px 12px;
 }
 
 /* outlier */
@@ -191,11 +204,18 @@ form.del-button input[type="submit"]:hover {
 
 /* forms customization */
 
-.MyResourceNew form input, .MyResourceEdit form input {
+.MyResourceNew form input, .MyResourceEdit form input, .Login form input {
   width: 96%;
 }
 
 /* pages style */
+
+/* pages style - login */
+
+.Page.Login > section {
+  width: 50%;
+  margin: 40px auto;
+}
 
 /* pages style - myresource */
 
