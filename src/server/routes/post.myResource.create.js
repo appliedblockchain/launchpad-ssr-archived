@@ -1,5 +1,5 @@
-import knex from '../knex'
-import resourcesCount from '../utils/db/resourcesCount'
+const knex = require('../knex')
+const resourcesCount = require('../utils/db/resourcesCount')
 
 const createMyResource = (params) => {
   return knex('myresource').insert({
@@ -23,4 +23,4 @@ const myResourceCreate = async (ctx) => {
   ctx.redirect('/myresource')
 }
 
-export default myResourceCreate
+module.exports = myResourceCreate

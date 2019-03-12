@@ -1,8 +1,8 @@
-import routes from '../../shared/routes'
-import selectResource from '../utils/db/selectResource'
-import { render } from '@jaredpalmer/after'
-import Document from '../../Document'
-import currentSession from '../utils/currentSession'
+const routes = require('../../shared/routes')
+const selectResource = require('../utils/db/selectResource')
+const { render } = require('@jaredpalmer/after')
+const Document = require('../../Document')
+const currentSession = require('../utils/currentSession')
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
@@ -30,4 +30,4 @@ const getRoute = async (ctx) => {
   }
 }
 
-export default getRoute
+module.exports = getRoute

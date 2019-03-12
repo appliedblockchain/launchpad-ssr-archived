@@ -1,5 +1,5 @@
-import knex from '../knex'
-import findOne from '../utils/db/findOne'
+const knex = require('../knex')
+const findOne = require('../utils/db/findOne')
 
 const updateMyResource = (resource, id, params) => {
   const record = knex(resource).where('id', id).limit(1)
@@ -26,4 +26,4 @@ const myResourceUpdate = async (ctx) => {
   ctx.redirect('/myresource')
 }
 
-export default myResourceUpdate
+module.exports = myResourceUpdate

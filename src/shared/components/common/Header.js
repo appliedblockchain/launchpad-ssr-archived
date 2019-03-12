@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
+// import { Helmet } from 'react-helmet'
 import Nav from '../nav/Nav'
 
 const Header = ({ currentUser }) => {
@@ -16,11 +16,13 @@ const Header = ({ currentUser }) => {
   // const logoImg = `react.svg`
   const logoImgPath = `/img/${logoImg}`
 
+  // <Helmet>
+  //   <link rel="stylesheet" href="/style.css" />
+  // </Helmet>
+
   return (
     <div>
-      <Helmet>
-        <link rel="stylesheet" href="/style.css" />
-      </Helmet>
+      <link rel="stylesheet" href="/style.css" />
       <a href="/">
         <div className="header">
           <div className="header-right right">

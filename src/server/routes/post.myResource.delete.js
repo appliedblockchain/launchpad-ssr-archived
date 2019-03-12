@@ -1,6 +1,6 @@
-import knex from '../knex'
-import resourcesCount from '../utils/db/resourcesCount'
-import findOne from '../utils/db/findOne'
+const knex = require('../knex')
+const resourcesCount = require('../utils/db/resourcesCount')
+const findOne = require('../utils/db/findOne')
 
 const deleteResource = async (resourceName, resource) => {
   const status = await knex(resourceName).where('id', resource.id).delete()
@@ -23,4 +23,4 @@ const myResourceDelete = async (ctx) => {
   ctx.redirect('/myresource')
 }
 
-export default myResourceDelete
+module.exports = myResourceDelete

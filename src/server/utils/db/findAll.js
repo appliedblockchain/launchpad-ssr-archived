@@ -1,7 +1,7 @@
-import knex from '../../knex'
+const knex = require('../../knex')
 
 const findAll = async (resourceName) => (
   knex.select().from(resourceName)
 )
 
-export default findAll
+module.exports = findAll

@@ -1,15 +1,15 @@
-import Koa from 'koa'
-import Router from 'koa-router'
-import statics from 'koa-static'
-import helmet from 'koa-helmet'
-import bodyParser from 'koa-bodyparser'
-import logger from 'koa-logger'
-import koaSession from 'koa-session2'
-import getRoute from './routes/get'
-import sessionsCreate from './routes/post.sessions.create'
-import myResourceCreate from './routes/post.myResource.create'
-import myResourceUpdate from './routes/post.myResource.update'
-import myResourceDelete from './routes/post.myResource.delete'
+const Koa = require('koa')
+const Router = require('koa-router')
+const statics = require('koa-static')
+const helmet = require('koa-helmet')
+const bodyParser = require('koa-bodyparser')
+const logger = require('koa-logger')
+const koaSession = require('koa-session2')
+const getRoute = require('./routes/get')
+const sessionsCreate = require('./routes/post.sessions.create')
+const myResourceCreate = require('./routes/post.myResource.create')
+const myResourceUpdate = require('./routes/post.myResource.update')
+const myResourceDelete = require('./routes/post.myResource.delete')
 
 // TODO: config
 // create a config file for this secret
@@ -45,4 +45,4 @@ server
   .use(router.routes())
   .use(router.allowedMethods())
 
-export default server
+module.exports = server

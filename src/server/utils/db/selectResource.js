@@ -1,7 +1,7 @@
-import knex from '../../knex'
+const knex = require('../../knex')
 
 const selectResource = async (resourceName) => (
   knex.select().from(resourceName).orderBy('updated_at', 'desc')
 )
 
-export default selectResource
+module.exports = selectResource

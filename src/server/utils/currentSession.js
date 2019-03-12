@@ -1,4 +1,4 @@
-import findOne from '../utils/db/findOne'
+const findOne = require('../utils/db/findOne')
 
 const currentSession = async (ctx) => {
   const { session } = ctx
@@ -15,4 +15,4 @@ const currentSession = async (ctx) => {
   }
 }
 
-export default currentSession
+module.exports = currentSession

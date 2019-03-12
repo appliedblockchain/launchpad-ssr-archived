@@ -1,4 +1,4 @@
-import findAll from '../utils/db/findAll'
+const findAll = require('../utils/db/findAll')
 
 const sessionsCreate = async (ctx) => {
   const { session } = ctx
@@ -22,4 +22,4 @@ const sessionsCreate = async (ctx) => {
   }
 }
 
-export default sessionsCreate
+module.exports = sessionsCreate

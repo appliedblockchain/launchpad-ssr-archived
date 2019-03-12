@@ -1,4 +1,4 @@
-import knex from '../../knex'
+const knex = require('../../knex')
 
 const resourcesCount = async (resourceName) => {
   let count = await knex(resourceName).count('id')
@@ -6,4 +6,4 @@ const resourcesCount = async (resourceName) => {
   return count
 }
 
-export default resourcesCount
+module.exports = resourcesCount
