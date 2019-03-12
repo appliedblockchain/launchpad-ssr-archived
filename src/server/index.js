@@ -16,6 +16,7 @@ import myResourceDelete from './routes/post.myResource.delete'
 // next step - hook up kms (or vault-proxy) and use the vault url/hash
 //
 const SESSION_SECRET_KEY = '85889f1d6f515a578e0e52f443931eb9'
+process.env.RAZZLE_PUBLIC_DIR = process.env.RAZZLE_PUBLIC_DIR || '../../public'
 
 const server = new Koa()
 const router = new Router()

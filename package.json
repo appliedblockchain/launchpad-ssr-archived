@@ -30,9 +30,10 @@
   "devDependencies": {
     "@appliedblockchain/eslint-config": "^2.6.0",
     "jest": "^24.3.1",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "supertest": "^4.0.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./test/spec-config.js"
+
   }
 }
