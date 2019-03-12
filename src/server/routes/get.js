@@ -1,6 +1,5 @@
 const routes = require('../../shared/routes')
 const selectResource = require('../utils/db/selectResource')
-const { render } = require('@jaredpalmer/after')
 const Document = require('../../Document')
 const currentSession = require('../utils/currentSession')
 
@@ -10,19 +9,19 @@ const getRoute = async (ctx) => {
   const session = await currentSession(ctx)
   const { user } = session
   try {
-    const html = await render({
-      req: ctx.req,
-      res: ctx.res,
-      routes,
-      assets,
-      document: Document,
-      data: {
-        users: await selectResource('users'),
-        companies: await selectResource('companies'),
-        myResource: await selectResource('myresource'),
-        currentUser: user
-      }
-    })
+    // const html = await render({
+    //   req: ctx.req,
+    //   res: ctx.res,
+    //   routes,
+    //   assets,
+    //   document: Document,
+    //   data: {
+    //     users: await selectResource('users'),
+    //     companies: await selectResource('companies'),
+    //     myResource: await selectResource('myresource'),
+    //     currentUser: user
+    //   }
+    // })
     const context = ctx
     context.body = html
   } catch (error) {

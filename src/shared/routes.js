@@ -28,8 +28,9 @@
 // ]
 
 
+const React = require('react')
 
-class SamplePage extends Component {
+class SamplePage extends React.Component {
   render() {
     return (
       <div className="SamplePage Page">
@@ -39,15 +40,13 @@ class SamplePage extends Component {
   }
 }
 
+
 const ReactDOMServer = require('react-dom/server')
 
 const homeComponentSource = SamplePage
-
 const homeComponent = ReactDOMServer.renderToStaticMarkup(homeComponentSource)
 
 
-const components = [
-  homeComponent
-]
-
-module.exports = components
+module.exports = {
+  homeComponent: homeComponent
+}
