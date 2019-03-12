@@ -1,28 +1,39 @@
-import React, { Component } from 'react';
-import logo from './react.svg';
-import './Home.css';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Header from '../common/Header'
 
 class Home extends Component {
-  static async getInitialProps({ req, res, match, history, location, ...ctx }) {
-    return { whatever: 'stuff' };
+  static async getInitialProps({ ...ctx }) {
+    const { currentUser } = ctx.data
+    return { currentUser }
+  }
+
+  static propTypes = {
+    currentUser: PropTypes.object
+  }
+
+  currentUserText(user) {
+    return user && <p>You&#39;re logged in as {user.email}</p>
   }
 
   render() {
+    const { currentUser } = this.props
     return (
-      <div className="Home">
-        <div className="Home-header">
-          <img src={logo} className="Home-logo" alt="logo" />
-          <h2>Welcome to AB</h2>
-        </div>
-        <p className="Home-intro">
-          To get started, edit <code>src/Home.js</code> or{' '}
-          <code>src/About.js</code>and save to reload.
-        </p>
-        <Link to="/about">About -></Link>
+      <div className="Home Page">
+        <Header currentUser={currentUser} />
+        <section className="content">
+          <p className="intro">
+            To get started, view{' '}
+            <a href="https://github.com/appliedblockchain/base-ssr-app/tree/master/src/shared/components">
+              this directory, where all the components reside
+            </a>
+          </p>
+
+          {this.currentUserText(currentUser)}
+        </section>
       </div>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home

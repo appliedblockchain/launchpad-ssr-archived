@@ -1,13 +1,11 @@
 const knexInit = require('knex')
 
-let knex
-const createInstance = () => knexInit({
+module.exports = knexInit({
   client: 'pg',
   connection: {
     user: 'postgres',
     password: '1234567890',
-    database: 'ssr'
+    database: 'ssr',
+    port: 5432
   }
 })
-
-module.exports = knex || (knex = createInstance())

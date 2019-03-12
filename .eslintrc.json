@@ -1,0 +1,15 @@
+{
+  "extends": "@appliedblockchain/eslint-config/react",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "no-param-reassign": [2, { "props": false }],
+    "react/prefer-stateless-function": "warn",
+    "react/prop-types": "warn"
+  }
+}
