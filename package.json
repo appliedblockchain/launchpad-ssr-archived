@@ -5,6 +5,7 @@
   "scripts": {
     "start": "razzle start",
     "build": "razzle build",
+    "start:new": "sucrase-node src",
     "db:run": "cd database && docker-compose up",
     "db:rebuild": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "test": "razzle test --env=jsdom",
@@ -30,7 +31,8 @@
   "devDependencies": {
     "@appliedblockchain/eslint-config": "^2.6.0",
     "jest": "^24.3.1",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "sucrase": "^3.10.0"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./test/spec-config.js"
