@@ -3,6 +3,7 @@ const selectResource = require('../utils/db/selectResource')
 const Document = require('../../Document')
 const currentSession = require('../utils/currentSession')
 
+process.env.RAZZLE_ASSETS_MANIFEST = process.env.RAZZLE_ASSETS_MANIFEST || '../../../build/assets.json'
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
 const getRoute = async (ctx) => {

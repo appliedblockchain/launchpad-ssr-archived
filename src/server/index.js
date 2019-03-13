@@ -10,7 +10,8 @@ const sessionsCreate = require('./routes/post.sessions.create')
 const myResourceCreate = require('./routes/post.myResource.create')
 const myResourceUpdate = require('./routes/post.myResource.update')
 const myResourceDelete = require('./routes/post.myResource.delete')
-require('sucrase/registerJSX')
+require('sucrase')
+require('sucrase/register/jsx')
 
 // TODO: config
 // create a config file for this secret

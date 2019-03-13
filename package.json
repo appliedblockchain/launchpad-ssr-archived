@@ -26,13 +26,13 @@
     "prop-types": "^15.7.2",
     "razzle": "^2.4.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "sucrase": "^3.10.0"
   },
   "devDependencies": {
     "@appliedblockchain/eslint-config": "^2.6.0",
     "jest": "^24.3.1",
-    "nodemon": "^1.18.10",
-    "sucrase": "^3.10.0"
+    "nodemon": "^1.18.10"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./test/spec-config.js"
