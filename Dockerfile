@@ -42,4 +42,4 @@ COPY ./.git/HEAD .
 
 EXPOSE 80
 
-CMD npm run start:prod
+CMD  DB_HOST=postgres npm run db:rebuild && npm run start:prod
