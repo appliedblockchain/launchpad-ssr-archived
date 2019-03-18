@@ -1,2 +1,5 @@
 node_modules
 build
+.git
+!.git/refs/heads
+!.git/HEAD

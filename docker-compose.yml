@@ -5,12 +5,15 @@ services:
     image: appliedblockchain/launchpad-ssr-app
     build:
       context: .
+      args:
+        - PORT=80
+        - DB_HOST=postgres
     ports:
       - 80:80
     depends_on:
       - postgres
     environment:
-      - PORT=80
+      - DB_HOST=postgres
   postgres:
     environment:
       - POSTGRES_USER=postgres

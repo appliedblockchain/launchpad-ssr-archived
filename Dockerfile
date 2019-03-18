@@ -21,6 +21,8 @@ RUN npm install
 COPY ./ /api
 COPY ./.eslintignore /api
 
+ARG PORT
+
 RUN npm run build
 
 # stage 2
@@ -30,13 +32,10 @@ RUN apk --update --no-cache add alpine-sdk git python openssl curl bash redis &&
   rm -rf /tmp/* /var/cache/apk/*
 
 COPY --from=builder /api/.eslintrc.json /api/
+COPY --from=builder /api/package* /api/
 COPY --from=builder /api/ /api
 
 WORKDIR /api
-
-# TODO: check if we need this
-# RUN cd /api && npm install --only=production
-# RUN cd /contracts && npm install --only=production
 
 COPY ./.git/refs/heads/* ./
 COPY ./.git/HEAD .
