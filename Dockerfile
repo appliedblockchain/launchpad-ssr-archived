@@ -5,6 +5,7 @@ RUN apk add --update --no-cache alpine-sdk git python && \
 
 RUN npm i -g yarn
 
+
 WORKDIR /api
 
 ARG NPM_TOKEN
@@ -15,14 +16,12 @@ COPY ./package* /api/
 COPY ./yarn.lock /api/
 COPY ./.eslintrc.json /api/
 # RUN npm install --only=production
-RUN yarn install
+RUN npm install
 
 COPY ./ /api
 COPY ./.eslintignore /api
 
-RUN ls -al
-
-RUN yarn run build
+RUN npm run build
 
 # stage 2
 FROM node:10.15-alpine
@@ -30,8 +29,8 @@ FROM node:10.15-alpine
 RUN apk --update --no-cache add alpine-sdk git python openssl curl bash redis && \
   rm -rf /tmp/* /var/cache/apk/*
 
-COPY --from=builder /api/.eslintrc.json /api
-COPY --from=builder /api /api
+COPY --from=builder /api/.eslintrc.json /api/
+COPY --from=builder /api/ /api
 
 WORKDIR /api
 
@@ -42,6 +41,6 @@ WORKDIR /api
 COPY ./.git/refs/heads/* ./
 COPY ./.git/HEAD .
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD yarn run start:prod
+CMD npm run start:prod

@@ -5,11 +5,12 @@ const placeholder = () => (<div>...LOADING...</div>)
 
 const route = (path, component, options) => {
   let exact = !(options && !options.exact)
+  console.log(`loading component:`, component)
   return {
     path: path,
     exact: exact,
     component: asyncComponent({
-      loader: () => import(`./components/${component}`),
+      loader: () => Promise.resolve(require(`./components/${component}`)),
       Placeholder: () => placeholder
     })
   }

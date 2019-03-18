@@ -20,7 +20,7 @@ const myResourceUpdate = async (ctx) => {
     name: postParams.name,
     description: postParams.description
   }
-  console.log(`new params came in - (name: ${name}`)
+  console.log(`new params came in - (name: ${params.name}`)
   await updateMyResource('myresource', id, params)
   console.log('Resource Updated!')
   ctx.redirect('/myresource')
