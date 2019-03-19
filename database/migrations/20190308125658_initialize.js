@@ -15,6 +15,7 @@ exports.up = async knex => {
   await knex.schema.createTable('myresource', t => {
     t.increments('id').primary()
     t.string('name').notNullable()
+    t.string('description').notNullable()
     t.timestamps(false, true)
   })
 

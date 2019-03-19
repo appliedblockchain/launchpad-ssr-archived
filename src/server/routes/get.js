@@ -3,10 +3,14 @@ import selectResource from '../utils/db/selectResource'
 import { render } from '@jaredpalmer/after'
 import Document from '../../Document'
 import currentSession from '../utils/currentSession'
+import getVersion from '../utils/version'
+
+
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
 const getRoute = async (ctx) => {
+  assets.version = await getVersion()
   const session = await currentSession(ctx)
   const { user } = session
   try {

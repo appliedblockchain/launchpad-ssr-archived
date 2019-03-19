@@ -5,12 +5,15 @@ const app = require('./server').default
 let currentHandler = app.callback()
 const server = http.createServer(currentHandler)
 
-server.listen(process.env.PORT || 3000, error => {
+const port = process.env.PORT || 3000
+
+server.listen(port, error => {
   if (error) {
-    console.log(error)
+    console.log('Error starting server')
+    throw error
   }
 
-  console.log('🚀 Server Started!')
+  console.log(`🚀 Server Started!, listening on port ${port}`)
 })
 
 if (module.hot) {

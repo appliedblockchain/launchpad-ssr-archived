@@ -13,7 +13,6 @@ const Header = ({ currentUser }) => {
   }
 
   const logoImg = 'ab.jpg'
-  // const logoImg = `react.svg`
   const logoImgPath = `/img/${logoImg}`
 
   return (

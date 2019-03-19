@@ -4,8 +4,8 @@ import { asyncComponent } from '@jaredpalmer/after'
 const placeholder = () => (<div>...LOADING...</div>)
 
 const route = (path, component, options) => {
-  let exact = !(options && !options.exact)
-  console.log(`loading component:`, component)
+  const exact = !(options && !options.exact)
+  console.log(`loading component: ${component}`)
   return {
     path: path,
     exact: exact,
@@ -24,6 +24,6 @@ export default [
   route('/companies', 'companies/Companies'),
   route('/myresource', 'myresource/MyResourceIndex'),
   route('/myresource/new', 'myresource/MyResourceNew'),
-  route('/myresource/:id/edit', 'myresource/MyResourceEdit', { exact: false }),
+  route('/myresource/:id/edit', 'myresource/MyResourceEdit', { exact: false })
   // route('/*', 'notFound/NotFound', { exact: false })
 ]
