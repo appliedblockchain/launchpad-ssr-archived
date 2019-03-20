@@ -5,14 +5,13 @@ import Document from '../../Document'
 import currentSession from '../utils/currentSession'
 import getVersion from '../utils/version'
 
-
-
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
 const getRoute = async (ctx) => {
   assets.version = await getVersion()
   const session = await currentSession(ctx)
   const { user } = session
+
   try {
     const html = await render({
       req: ctx.req,
@@ -21,6 +20,7 @@ const getRoute = async (ctx) => {
       assets,
       document: Document,
       data: {
+        contractValue: await ctx.contracts.HelloWorld.methods.getHelloWorld().call(),
         users: await selectResource('users'),
         companies: await selectResource('companies'),
         myResource: await selectResource('myresource'),

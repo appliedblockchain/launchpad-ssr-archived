@@ -20,6 +20,7 @@ export default [
   route('/', 'home/Home'),
   route('/login', 'login/Login'),
   route('/about', 'about/About'),
+  route('/contract', 'contract/ContractIndex'),
   route('/users', 'users/Users'),
   route('/companies', 'companies/Companies'),
   route('/myresource', 'myresource/MyResourceIndex'),

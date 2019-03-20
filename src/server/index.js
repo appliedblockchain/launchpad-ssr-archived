@@ -10,6 +10,8 @@ import sessionsCreate from './routes/post.sessions.create'
 import myResourceCreate from './routes/post.myResource.create'
 import myResourceUpdate from './routes/post.myResource.update'
 import myResourceDelete from './routes/post.myResource.delete'
+import contractUpdate from './routes/post.contract'
+import { contracts, web3 } from './utils/web3'
 
 // TODO: config
 // create a config file for this secret
@@ -29,6 +31,7 @@ router.post('/sessions/create', sessionsCreate)
 router.post('/myresource', myResourceCreate)
 router.post('/myresource/*/update', myResourceUpdate)
 router.post('/myresource/*/delete', myResourceDelete)
+router.post('/contract', contractUpdate)
 
 // get routes
 router.get('/*', getRoute)
@@ -36,6 +39,17 @@ router.get('/*', getRoute)
 // application server
 server
   .use(helmet())
+  .use(async (ctx, next) => {
+    const env = process['env']
+    const sendParams = {
+      from: env.FROM || '0x1F2e5282481C07BC8B7b07E53Bc3EF6A8012D6b7',
+      gas: env.gas || '500000',
+      gasPrice: env.gasPrice || '0'
+    }
+
+    Object.assign(ctx, { contracts, web3, sendParams })
+    await next()
+  })
   .use(statics(process.env.RAZZLE_PUBLIC_DIR))
   .use(koaSession({
     key: SESSION_SECRET_KEY
