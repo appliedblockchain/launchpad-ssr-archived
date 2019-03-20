@@ -5,15 +5,16 @@ import PropTypes from 'prop-types'
 class About extends Component {
 
   static async getInitialProps({ ...ctx }) {
-    const { users, companies, myResource } = ctx.data
-    return { users, companies, myResource }
+    const { users, companies, myResource, currentUser } = ctx.data
+    return { users, companies, myResource, currentUser }
   }
 
   static get propTypes() {
     return {
       users: PropTypes.array,
       companies: PropTypes.array,
-      myResource: PropTypes.array
+      myResource: PropTypes.array,
+      currentUser: PropTypes.object
     }
   }
 
@@ -40,12 +41,10 @@ class About extends Component {
   }
 
   render() {
-    const users = this.props.users
-    const companies = this.props.companies
-    const resources = this.props.myResource
+    const { users, companies, myResource: resources, currentUser } = this.props
 
     return (<div className="About Page">
-      <Header />
+      <Header currentUser={currentUser} />
       <h1>About</h1>
       <section className="content">
         <h1>Users ({users.length})</h1>

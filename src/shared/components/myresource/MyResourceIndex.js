@@ -5,12 +5,13 @@ import PropTypes from 'prop-types'
 class MyResourceIndex extends Component {
 
   static async getInitialProps({ ...ctx }) {
-    const { users, companies, myResource } = ctx.data
-    return { users, companies, myResource }
+    const { users, companies, myResource, currentUser } = ctx.data
+    return { users, companies, myResource, currentUser }
   }
 
   static get propTypes() {
     return {
+      currentUser: PropTypes.object,
       myResource: [ {
         name: PropTypes.string,
         description: PropTypes.string,
@@ -40,8 +41,10 @@ class MyResourceIndex extends Component {
   }
 
   render() {
+    const { currentUser } = this.props
+
     return (<div className="About Page">
-      <Header />
+      <Header currentUser={currentUser} />
       <h1>My Resource</h1>
       <section className="content">
         <p>e.g. Blogposts or todolist</p>

@@ -7,6 +7,7 @@ import logger from 'koa-logger'
 import koaSession from 'koa-session2'
 import getRoute from './routes/get'
 import sessionsCreate from './routes/post.sessions.create'
+import sessionsDestroy from './routes/get.sessions.delete'
 import myResourceCreate from './routes/post.myResource.create'
 import myResourceUpdate from './routes/post.myResource.update'
 import myResourceDelete from './routes/post.myResource.delete'
@@ -26,6 +27,7 @@ const router = new Router()
 
 // auth
 router.post('/sessions/create', sessionsCreate)
+router.get('/logout', sessionsDestroy)
 
 // myResource
 router.post('/myresource', myResourceCreate)

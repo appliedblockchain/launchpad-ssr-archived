@@ -12,6 +12,12 @@ const getRoute = async (ctx) => {
   const session = await currentSession(ctx)
   const { user } = session
 
+
+  if (!user && !ctx.req.url.startsWith('/login')) {
+    ctx.redirect('/login')
+    return
+  }
+
   try {
     const html = await render({
       req: ctx.req,
