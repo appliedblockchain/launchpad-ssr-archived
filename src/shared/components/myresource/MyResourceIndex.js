@@ -1,11 +1,23 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
+import PropTypes from 'prop-types'
 
 class MyResourceIndex extends Component {
 
   static async getInitialProps({ ...ctx }) {
     const { users, companies, myResource } = ctx.data
     return { users, companies, myResource }
+  }
+
+  static get propTypes() {
+    return {
+      myResource: [ {
+        name: PropTypes.string,
+        description: PropTypes.string,
+        created_at: PropTypes.date,
+        updated_at: PropTypes.date
+      } ]
+    }
   }
 
   deleteBtn(resourceId) {

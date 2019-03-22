@@ -1,5 +1,6 @@
 import knex from '../knex'
 import findOne from '../utils/db/findOne'
+import Joi from 'joi'
 
 const updateMyResource = (resource, id, params) => {
   const record = knex(resource).where('id', id).limit(1)
@@ -20,9 +21,14 @@ const myResourceUpdate = async (ctx) => {
     name: postParams.name,
     description: postParams.description
   }
-  console.log(`new params came in - (name: ${params.name}`)
+
+  await Joi. validate(params, Joi.object({
+    name: Joi.string().required(),
+    description: Joi.string().required()
+  }))
+
   await updateMyResource('myresource', id, params)
-  console.log('Resource Updated!')
+
   ctx.redirect('/myresource')
 }
 

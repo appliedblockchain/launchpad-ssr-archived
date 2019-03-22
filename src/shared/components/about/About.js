@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
+import PropTypes from 'prop-types'
 
 class About extends Component {
 
   static async getInitialProps({ ...ctx }) {
     const { users, companies, myResource } = ctx.data
     return { users, companies, myResource }
+  }
+
+  static get propTypes() {
+    return {
+      users: PropTypes.array,
+      companies: PropTypes.array,
+      myResource: PropTypes.array
+    }
   }
 
   users(collection) {
@@ -24,12 +33,10 @@ class About extends Component {
     )
   }
 
-  myResources(collection) {
-    return (
-      collection.map((resource) => (
-        <li key={`org-${resource.id}`}>{resource.name}</li>
-      ))
-    )
+  resources(resources) {
+    return resources.map((resource) => (
+      <li key={`org-${resource.id}`}>{resource.name}</li>
+    ))
   }
 
   render() {
@@ -51,7 +58,7 @@ class About extends Component {
         </ul>
         <h1>Resources ({resources.length})</h1>
         <ul>
-          { this.myResources(resources) }
+          { this.resources(resources) }
         </ul>
       </section>
     </div>)

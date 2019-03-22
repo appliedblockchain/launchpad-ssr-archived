@@ -5,13 +5,17 @@
   "scripts": {
     "start": "razzle start",
     "build": "razzle build",
-    "db:run": "cd database && docker-compose up",
+    "stack:dev": "cd stack && docker-compose -f docker-compose-dev.yml up",
+    "db:migrate": "knex migrate:latest && knex seed:run",
     "db:rebuild": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "test": "razzle test --env=jsdom",
-    "start:prod": "NODE_ENV=production node build/server.js"
+    "start:prod": "NODE_ENV=production node build/server.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@jaredpalmer/after": "latest",
+    "abi-decoder": "^1.2.0",
+    "joi": "^14.3.1",
     "knex": "^0.16.3",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
@@ -25,7 +29,8 @@
     "prop-types": "^15.7.2",
     "razzle": "^2.4.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "web3": "^1.0.0-beta.33"
   },
   "devDependencies": {
     "@appliedblockchain/eslint-config": "^2.6.0",

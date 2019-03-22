@@ -1,16 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Header from '../common/Header'
 
-class Users extends Component {
-
-  render() {
-    return (
-      <div>
-        <Header />
-        users...
-      </div>
-    )
-  }
+function Users() {
+  return (
+    <div>
+      <Header />
+      users...
+    </div>
+  )
 }
 
 export default Users

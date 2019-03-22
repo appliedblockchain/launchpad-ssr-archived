@@ -1,26 +1,28 @@
 import knex from '../knex'
-import resourcesCount from '../utils/db/resourcesCount'
+import Joi from 'joi'
 
 const createMyResource = (params) => {
   return knex('myresource').insert({
-    name: params.name
+    name: params.name,
+    description: params.description
   })
 }
 
-const myResourceCreate = async (ctx) => {
-  let count = await resourcesCount('myresource')
+const createRessourceHandler = async (ctx) => {
   const postParams = ctx.request.body
   const params = {
     name: postParams.name,
     description: postParams.description
   }
-  console.log('Create resource - params:', params)
-  console.log(`Resources count (${count})`)
+  await Joi. validate(params, Joi.object({
+    name: Joi.string().required(),
+    description: Joi.string().required()
+  }))
+
   await createMyResource(params)
-  console.log('Resource Created!')
-  count = await resourcesCount('myresource')
-  console.log(`Resources count (${count}) - after create`)
+
   ctx.redirect('/myresource')
 }
 
-export default myResourceCreate
+export default createRessourceHandler
+

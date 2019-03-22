@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
 import MyResourceForm from './MyResourceForm'
+import PropTypes from 'prop-types'
 
 class MyResourceEdit extends Component {
 
   static async getInitialProps({ ...ctx }) {
     const { myResource } = ctx.data
     return { myResource }
+  }
+
+  static get propTypes() {
+    return {
+      match: PropTypes.object,
+      myResource: PropTypes.array
+    }
   }
 
   resourceDetails(resource) {

@@ -1,30 +1,17 @@
-version: "3.6"
+version: '3.6'
 
 services:
-  app:
-    image: appliedblockchain/launchpad-ssr-app
-    build:
-      context: .
-      args:
-        - PORT=80
-        - DB_HOST=postgres
-    ports:
-      - 80:80
-    depends_on:
-      - postgres
-    environment:
-      - CONTRACT_ADDRESSES={"HelloWorld":"0x2Bd63177f61D0Dc67534d48406c1849005dfE04B"}
-      - DB_HOST=postgres
-      - ETHEREUM_JSONRPC_ENDPOINT=http://parity:8545
-    networks:
-      - main
-  postgres:
+  database:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234567890
       - POSTGRES_DB=ssr
     image: postgres
+    ports:
+      - 5432:5432
     restart: unless-stopped
+    volumes:
+      - database:/var/lib/postgresql/data
     networks:
       - main
   parity:

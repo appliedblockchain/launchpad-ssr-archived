@@ -228,3 +228,13 @@ form.del-button input[type="submit"]:hover {
 .About.Page ul li {
   list-style-type: circle;
 }
+
+.footer {
+  font-size: 12px;
+  left: 0;
+  bottom: 0;
+  padding-bottom: 10px;
+  width: 100%;
+  color: grey;
+  text-align: center;
+}

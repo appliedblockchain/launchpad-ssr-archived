@@ -1,14 +1,24 @@
 import React from 'react'
 import { AfterRoot, AfterData } from '@jaredpalmer/after'
+import PropTypes from 'prop-types'
 
 class Document extends React.Component {
   static async getInitialProps({ assets, data, renderPage, match }) {
     const page = await renderPage()
     if (!match) {
       console.log('TODO: Render 404 page!')
-      throw new Error("404 not implemented yet!")
+      throw new Error('404 not implemented yet!')
     }
+
     return { assets, data, activePage: match.path, ...page }
+  }
+
+  static get propTypes() {
+    return {
+      helmet: PropTypes.object,
+      assets: PropTypes.object,
+      data: PropTypes.object
+    }
   }
 
   capitalize = (str) => {
@@ -48,6 +58,7 @@ class Document extends React.Component {
             defer
             crossOrigin="anonymous"
           />
+          <div className="footer"> Version: {assets.version} </div>
         </body>
       </html>
     )

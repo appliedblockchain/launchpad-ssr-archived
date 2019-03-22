@@ -1,16 +1,21 @@
 import http from 'http'
+import { checkDeployments } from './server/utils/web3'
 
 const app = require('./server').default
 
 let currentHandler = app.callback()
 const server = http.createServer(currentHandler)
 
-server.listen(process.env.PORT || 3000, error => {
-  if (error) {
-    console.log(error)
-  }
+const port = process.env.PORT || 3000
 
-  console.log('🚀 Server Started!')
+server.listen(port, async error => {
+  if (error) {
+    console.log('Error starting server')
+    throw error
+  }
+  await checkDeployments()
+
+  console.log(`🚀 Server Started!, listening on port ${port}`)
 })
 
 if (module.hot) {

@@ -2,23 +2,23 @@
 
 ### Install
 
-    yarn 
+    npm i
 
-### Database
+### Database and Parity
 
-You can use local postgres or use the provided docker container, just run this:
+You can use local postgres and parity-solo-instant or use the provided docker container, just run this:
 
-    yarn db:run
+    npm run dev-stack
 
 ### Prepare and Seed Database
 
-    yarn db:rebuild
+    npm run db:migrate
 
 ### Run
 
-    yarn start
-    
-    
+    npm start
+
+
 Visit http://localhost:3000
 
 
