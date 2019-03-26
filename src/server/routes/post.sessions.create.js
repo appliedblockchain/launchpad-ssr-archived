@@ -1,24 +1,22 @@
-import findAll from '../utils/db/findAll'
+import findOneBy from '../utils/db/findOneBy'
+import qs from 'querystring'
 
 const sessionsCreate = async (ctx) => {
   const { session } = ctx
-  const userEmail = ctx.request.body.email
-  console.log(`Attempting to log in as user: ${userEmail}`)
-  session.userId = 0
+  const { email, password, redirect } = ctx.request.body
 
-  const users = await findAll('users')
+  console.log(`Attempting to log in as user: ${email}`)
+  // session.userId = 0
 
-  let user = users.filter((userCurr) => (
-    userCurr.email === userEmail
-  ))
-  user = user[0]
+  const user = await findOneBy('users', 'email', email)
 
-  if (user) {
+  if (user && user.password === password) {
+    console.error('TODO: Password matching is plaintext!')
     console.log(`Logging in as user ${user.email} (id ${user.id})`)
     session.userId = user.id
-    ctx.redirect('/')
+    ctx.redirect(decodeURIComponent(redirect) || '/')
   } else {
-    ctx.redirect('/login')
+    ctx.redirect('/login?' + qs.stringify({ redirect, message: 'Invalid email or password' }))
   }
 }
 

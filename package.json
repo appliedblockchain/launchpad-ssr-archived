@@ -3,7 +3,7 @@
   "version": "2.4.1",
   "license": "MIT",
   "scripts": {
-    "start": "razzle start",
+    "start": "CONTRACT_ADDRESSES=$(cat ./contracts/build/contractAddresses.json) razzle start",
     "build": "razzle build",
     "stack:dev": "cd stack && docker-compose -f docker-compose-dev.yml up",
     "db:migrate": "knex migrate:latest && knex seed:run",
@@ -27,6 +27,7 @@
     "koa-static": "^5.0.0",
     "pg": "^7.8.2",
     "prop-types": "^15.7.2",
+    "query-string": "^6.4.0",
     "razzle": "^2.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

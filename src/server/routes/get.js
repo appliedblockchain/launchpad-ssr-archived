@@ -8,13 +8,17 @@ import getVersion from '../utils/version'
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
 const getRoute = async (ctx) => {
-  assets.version = await getVersion()
   const session = await currentSession(ctx)
   const { user } = session
-
+  assets.version = await getVersion()
 
   if (!user && !ctx.req.url.startsWith('/login')) {
-    ctx.redirect('/login')
+    ctx.redirect(`/login?redirect=${ctx.req.url}`)
+    return
+  }
+
+  if (user && ctx.req.url.startsWith('/login')) {
+    ctx.redirect('/')
     return
   }
 

@@ -238,3 +238,9 @@ form.del-button input[type="submit"]:hover {
   color: grey;
   text-align: center;
 }
+
+.error {
+    margin-top: 10px;
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
