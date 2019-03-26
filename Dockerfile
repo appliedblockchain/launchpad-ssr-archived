@@ -11,12 +11,13 @@ ARG NPM_TOKEN
 RUN echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc && \
   npm i && rm ~/.npmrc
 
+ARG DB_HOST
+ARG PORT
+
 COPY ./ /api
 COPY ./.eslint* /api/
 COPY ./.git/refs/heads/* ./
 COPY ./.git/HEAD .
-
-ARG PORT
 
 RUN npm run build
 
