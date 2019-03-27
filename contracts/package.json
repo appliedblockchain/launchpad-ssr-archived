@@ -9,7 +9,6 @@
         "install-contracts": "cp -f ./build/contractABIs.json ../src/contractABIs.json"
     },
     "dependencies": {
-        "config": "^3.0.0",
         "web3": "1.0.0-beta.36"
     },
     "devDependencies": {

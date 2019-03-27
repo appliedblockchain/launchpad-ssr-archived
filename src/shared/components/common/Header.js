@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import Nav from '../nav/Nav'
@@ -43,9 +43,9 @@ const Header = ({ currentUser }) => {
 }
 
 Header.propTypes = {
-  currentUser: {
+  currentUser: PropTypes.shape({
     email: PropTypes.string
-  }
+  })
 }
 
 export default Header

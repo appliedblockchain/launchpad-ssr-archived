@@ -8,8 +8,7 @@ const Web3 = require('web3')
 const contractsDirectory = join(__dirname, '../build/contracts')
 const contractsFilenames = readdirSync(contractsDirectory).filter(f => /\.json$/.test(f))
 
-const config = require('config')
-const PROVIDER = config.provider || process.env.PROVIDER
+const PROVIDER = process.env.ETHEREUM_JSONRPC_ENDPOINT || process.env.PROVIDER || 'http://localhost:8545'
 
 class ContractNotFoundError extends Error {}
 

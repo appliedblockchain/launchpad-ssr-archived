@@ -13,6 +13,8 @@ import myResourceUpdate from './routes/post.myResource.update'
 import myResourceDelete from './routes/post.myResource.delete'
 import contractUpdate from './routes/post.contract'
 import { contracts, web3 } from './utils/web3'
+import currentSession from './utils/currentSession'
+import assignToContext from './middleware/assignToContext'
 
 // TODO: config
 // create a config file for this secret
@@ -41,23 +43,34 @@ router.get('/*', getRoute)
 // application server
 server
   .use(helmet())
-  .use(async (ctx, next) => {
-    const env = process['env']
-    const sendParams = {
-      from: env.FROM || '0x1F2e5282481C07BC8B7b07E53Bc3EF6A8012D6b7',
-      gas: env.gas || '500000',
-      gasPrice: env.gasPrice || '0'
-    }
-
-    Object.assign(ctx, { contracts, web3, sendParams })
-    await next()
-  })
+  .use(assignToContext({ contracts, web3 }))
   .use(statics(process.env.RAZZLE_PUBLIC_DIR))
   .use(koaSession({
     key: SESSION_SECRET_KEY
   }))
   .use(bodyParser())
   .use(logger())
+  .use(async (ctx, next) => {
+    const session = await currentSession(ctx)
+    const { user } = session
+
+    if (ctx.request.method === 'GET') {
+      if (!user && !ctx.req.url.startsWith('/login')) {
+        ctx.redirect(`/login?redirect=${ctx.req.url}`)
+        return
+      }
+
+      if (user && ctx.req.url.startsWith('/login')) {
+        ctx.redirect('/')
+        return
+      }
+    } else if (ctx.req.url !== '/sessions/create') {
+      ctx.redirect(`/login?message=${encodeURIComponent('Please login first')}`)
+    }
+
+    await next()
+
+  })
   .use(router.routes())
   .use(router.allowedMethods())
 
