@@ -1,3 +1,5 @@
+'use strict'
+
 exports.up = async knex => {
 
   await knex.schema.createTable('user_role', t => {

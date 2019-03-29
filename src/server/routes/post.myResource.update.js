@@ -1,5 +1,5 @@
 import knex from '../knex'
-import findOne from '../utils/db/findOne'
+import findOne from '../modules/db/findOne'
 import Joi from 'joi'
 
 const updateMyResource = (resource, id, params) => {
@@ -13,21 +13,20 @@ const myResourceUpdate = async (ctx) => {
   const urlParams = ctx.params
   const postParams = ctx.request.body
   const id = urlParams[0]
-  const resource = await findOne('myresource', id)
-  console.log('id:', id)
-  console.log('resource:', resource)
 
-  const params = {
-    name: postParams.name,
-    description: postParams.description
+  if (await findOne('myresource', id)) {
+    const params = {
+      name: postParams.name,
+      description: postParams.description
+    }
+
+    await Joi. validate(params, Joi.object({
+      name: Joi.string().required(),
+      description: Joi.string().allow('').required()
+    }))
+
+    await updateMyResource('myresource', id, params)
   }
-
-  await Joi. validate(params, Joi.object({
-    name: Joi.string().required(),
-    description: Joi.string().required()
-  }))
-
-  await updateMyResource('myresource', id, params)
 
   ctx.redirect('/myresource')
 }

@@ -1,5 +1,7 @@
-import findOneBy from '../utils/db/findOneBy'
+import findOneBy from '../modules/db/findOneBy'
 import qs from 'querystring'
+
+import { compare } from '@appliedblockchain/mantle-auth/auth/scrypt'
 
 const sessionsCreate = async (ctx) => {
   const { session } = ctx
@@ -10,9 +12,7 @@ const sessionsCreate = async (ctx) => {
 
   const user = await findOneBy('users', 'email', email)
 
-  if (user && user.password === password) {
-    console.error('TODO: Password matching is plaintext!')
-    console.log(`Logging in as user ${user.email} (id ${user.id})`)
+  if (user && await compare(password, user.password)) {
     session.userId = user.id
     ctx.redirect(decodeURIComponent(redirect) || '/')
   } else {

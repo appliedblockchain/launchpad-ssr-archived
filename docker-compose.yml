@@ -13,6 +13,7 @@ services:
     depends_on:
       - postgres
     environment:
+      - REDIS_HOST=discovery
       - FROM=0fe32bb59e5993e6b5d45a963204aaffea2379c9 # parity1 unlocked account
       - DB_HOST=postgres
       - ETHEREUM_JSONRPC_ENDPOINT=http://parity1:8545
