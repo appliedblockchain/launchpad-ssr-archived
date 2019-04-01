@@ -11,9 +11,9 @@ class Login extends Component {
 
   static get propTypes() {
     return {
-      location: {
+      location: PropTypes.shape({
         search: PropTypes.string
-      }
+      })
     }
   }
 

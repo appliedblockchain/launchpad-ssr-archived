@@ -1,9 +1,16 @@
+'use strict'
+
+export const logout = async (ctx) => {
+  ctx.session = null // eslint-disable-line
+  ctx.redirect('/login')
+}
+
 import findOneBy from '../modules/db/findOneBy'
 import qs from 'querystring'
 
 import { compare } from '@appliedblockchain/mantle-auth/auth/scrypt'
 
-const sessionsCreate = async (ctx) => {
+export const login = async (ctx) => {
   const { session } = ctx
   const { email, password, redirect } = ctx.request.body
 
@@ -19,5 +26,3 @@ const sessionsCreate = async (ctx) => {
     ctx.redirect('/login?' + qs.stringify({ redirect, message: 'Invalid email or password' }))
   }
 }
-
-export default sessionsCreate
