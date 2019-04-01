@@ -6,6 +6,7 @@ services:
     build:
       context: .
       args:
+        - NPM_TOKEN
         - PORT=80
         - DB_HOST=postgres
     ports:
