@@ -4,10 +4,6 @@ import { Helmet } from 'react-helmet'
 import Nav from '../nav/Nav'
 
 const Header = ({ currentUser }) => {
-  function loginButton() {
-    return (<a className="button btn-small" href="/login">Login</a>)
-  }
-
   function loggedInMessage(_currentUser) {
     return (
       <div>
@@ -29,7 +25,7 @@ const Header = ({ currentUser }) => {
       <a href="/">
         <div className="header">
           <div className="header-right right">
-            { !currentUser ? loginButton() : loggedInMessage(currentUser) }
+            { currentUser && loggedInMessage(currentUser) }
           </div>
           <a href="/">
             <img src={logoImgPath} className="logo" alt="logo" />
@@ -37,7 +33,7 @@ const Header = ({ currentUser }) => {
           <h2>Welcome to SSR React</h2>
         </div>
       </a>
-      <Nav />
+      {currentUser && <Nav />}
     </div>
   )
 }
