@@ -41,7 +41,7 @@ class MyResourceIndex extends Component {
   }
 
   render() {
-    const { currentUser } = this.props
+    const { currentUser, myResource } = this.props.data
 
     return (<div className="About Page">
       <Header currentUser={currentUser} />
@@ -50,7 +50,7 @@ class MyResourceIndex extends Component {
         <p>e.g. Blogposts or todolist</p>
         <ul>
           {
-            this.resource(this.props.myResource)
+            this.resource(myResource)
           }
         </ul>
       </section>

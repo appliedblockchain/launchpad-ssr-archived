@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
-import MyResourceForm from './MyResourceForm'
+import MyResourceForm from './form'
 import PropTypes from 'prop-types'
 
 class MyResourceNew extends Component {
@@ -17,7 +17,7 @@ class MyResourceNew extends Component {
   }
 
   render() {
-    const { currentUser } = this.props
+    const { currentUser } = this.props.data
     return (
       <div className="MyResource MyResourceNew Page">
         <Header currentUser={currentUser} />

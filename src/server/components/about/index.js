@@ -41,7 +41,7 @@ class About extends Component {
   }
 
   render() {
-    const { users, companies, myResource: resources, currentUser } = this.props
+    const { users, companies, myResource: resources, currentUser } = this.props.data
 
     return (<div className="About Page">
       <Header currentUser={currentUser} />

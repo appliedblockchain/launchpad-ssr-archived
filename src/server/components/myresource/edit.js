@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
-import MyResourceForm from './MyResourceForm'
+import MyResourceForm from './form'
 import PropTypes from 'prop-types'
 
 class MyResourceEdit extends Component {
@@ -28,13 +28,19 @@ class MyResourceEdit extends Component {
   }
 
   render() {
-    const params = this.props.match.params
-    console.log('params', params)
-    const resources = this.props.myResource
-    const currentUser = this.props.currentUser
+    console.log('PROPS*******', this.props)
+    // const params = this.props.match.params
+    // console.log('params', params)
+    const { myResource: resources, currentUser } = this.props.data
+    const { path } = this.props
+    console.log('PATH', path)
+    const id = path.split('/')[2]
+    console.log('resources', resources)
     const resource = resources.find((res) => {
-      return res.id === Number(params.id)
+      return res.id === Number(id)
     })
+
+    console.log('resource', resource, id)
 
     return (<div className="MyResource MyResourceEdit Page">
       <Header currentUser={currentUser} />

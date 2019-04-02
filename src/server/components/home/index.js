@@ -17,7 +17,8 @@ class Home extends Component {
   }
 
   render() {
-    const { currentUser } = this.props
+    const { currentUser } = this.props.data
+    console.log('CURR', currentUser)
     return (
       <div className="Home Page">
         <Header currentUser={currentUser} />

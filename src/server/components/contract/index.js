@@ -17,7 +17,7 @@ class Contract extends Component {
   }
 
   render() {
-    const { contractValue, currentUser } = this.props
+    const { contractValue, currentUser } = this.props.data
 
     return (<div className="About Page">
       <Header currentUser={currentUser} />
