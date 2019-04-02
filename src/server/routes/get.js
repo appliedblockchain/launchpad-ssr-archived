@@ -12,16 +12,6 @@ const getRoute = async (ctx) => {
   const { user } = session
   assets.version = await getVersion()
 
-  if (!user && !ctx.req.url.startsWith('/login')) {
-    ctx.redirect(`/login?redirect=${ctx.req.url}`)
-    return
-  }
-
-  if (user && ctx.req.url.startsWith('/login')) {
-    ctx.redirect('/')
-    return
-  }
-
   try {
     const html = await render({
       req: ctx.req,

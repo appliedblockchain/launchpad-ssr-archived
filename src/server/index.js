@@ -5,7 +5,7 @@ import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import session from 'koa-session'
 import { contracts, web3 } from './utils/web3'
-import middleware from './middleware'
+import { checkLoggedIn, assignToContext } from './middleware'
 import redisStore from 'koa-redis'
 
 import router from './routes'
@@ -23,7 +23,7 @@ const env = process['env']
 // application server
 server
   .use(helmet())
-  .use(middleware.assignToContext({ contracts, web3 }))
+  .use(assignToContext({ contracts, web3 }))
   .use(statics(env.RAZZLE_PUBLIC_DIR))
   .use(session({
     store: redisStore({
@@ -32,7 +32,7 @@ server
   }, server))
   .use(bodyParser())
   .use(logger())
-  .use(middleware.checkLoggedIn)
+  .use(checkLoggedIn)
   .use(router.routes())
   .use(router.allowedMethods())
 

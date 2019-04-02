@@ -1,7 +1,7 @@
 import assignToContext from './assignToContext'
 import checkLoggedIn from './checkLoggedIn'
 
-export default {
+export {
   assignToContext,
   checkLoggedIn
 }
