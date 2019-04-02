@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
-import MyResourceForm from './form'
+import MyResourceForm from './Form'
 import PropTypes from 'prop-types'
 
 class MyResourceEdit extends Component {
-
-  static async getInitialProps({ ...ctx }) {
-    const { myResource, currentUser } = ctx.data
-    return { myResource, currentUser }
-  }
-
   static get propTypes() {
     return {
-      match: PropTypes.object,
+      path: PropTypes.string,
       myResource: PropTypes.any, // eslint-disable-line
       currentUser: PropTypes.object
     }
@@ -28,30 +22,22 @@ class MyResourceEdit extends Component {
   }
 
   render() {
-    console.log('PROPS*******', this.props)
-    // const params = this.props.match.params
-    // console.log('params', params)
-    const { myResource: resources, currentUser } = this.props.data
-    const { path } = this.props
-    console.log('PATH', path)
+    const { currentUser, path, myResource: resources } = this.props
     const id = path.split('/')[2]
-    console.log('resources', resources)
-    const resource = resources.find((res) => {
-      return res.id === Number(id)
-    })
+    const resource = resources.find((res) => res.id === Number(id))
 
-    console.log('resource', resource, id)
-
-    return (<div className="MyResource MyResourceEdit Page">
-      <Header currentUser={currentUser} />
-      <h1>Edit resource</h1>
-      <h3>(id: {resource.id})</h3>
-      <form method="post" action={`/myresource/${resource.id}/update`}>
-        <input type="hidden" name="_method" value="put" />
-        <MyResourceForm resource={resource} />
-        <input type="submit" value="Update" />
-      </form>
-    </div>)
+    return (
+      <div className="MyResource MyResourceEdit Page">
+        <Header currentUser={currentUser} />
+        <h1>Edit resource</h1>
+        <h3>(id: {resource.id})</h3>
+        <form method="post" action={`/myresource/${resource.id}/update`}>
+          <input type="hidden" name="_method" value="put" />
+          <MyResourceForm resource={resource} />
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+    )
   }
 }
 

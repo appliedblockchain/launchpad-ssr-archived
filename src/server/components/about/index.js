@@ -1,67 +1,52 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Header from '../common/Header'
 import PropTypes from 'prop-types'
 
-class About extends Component {
+const Collection = ({
+  keyPrefix,
+  data
+}) => (
+  <ul>
+    { data.map(d =>
+      <li key={`${keyPrefix}-${d.id}`}>{d.name}</li>
+    ) }
+  </ul>
+)
 
-  static async getInitialProps({ ...ctx }) {
-    const { users, companies, myResource, currentUser } = ctx.data
-    return { users, companies, myResource, currentUser }
-  }
+Collection.propTypes = {
+  keyPrefix: PropTypes.string,
+  data: PropTypes.array
+}
 
-  static get propTypes() {
-    return {
-      users: PropTypes.array,
-      companies: PropTypes.array,
-      myResource: PropTypes.array,
-      currentUser: PropTypes.object
-    }
-  }
-
-  users(collection) {
-    return (
-      collection.map((user) => (
-        <li key={`user-${user.id}`}>{user.name}</li>
-      ))
-    )
-  }
-
-  companies(collection) {
-    return (
-      collection.map((company) => (
-        <li key={`org-${company.id}`}>{company.name}</li>
-      ))
-    )
-  }
-
-  resources(resources) {
-    return resources.map((resource) => (
-      <li key={`org-${resource.id}`}>{resource.name}</li>
-    ))
-  }
-
-  render() {
-    const { users, companies, myResource: resources, currentUser } = this.props.data
-
-    return (<div className="About Page">
+const About = ({
+  users,
+  companies,
+  currentUser,
+  myResource: resources
+}) => {
+  return (
+    <div className="About Page">
       <Header currentUser={currentUser} />
       <h1>About</h1>
       <section className="content">
         <h1>Users ({users.length})</h1>
-        <ul>
-          { this.users(users) }
-        </ul>
+        <Collection keyPrefix="user" data={users} />
+
         <h1>Companies ({companies.length})</h1>
-        <ul>
-          { this.companies(companies) }
-        </ul>
+        <Collection keyPrefix="user" data={companies} />
+
         <h1>Resources ({resources.length})</h1>
-        <ul>
-          { this.resources(resources) }
-        </ul>
+        <Collection keyPrefix="user" data={resources} />
       </section>
-    </div>)
-  }
+    </div>
+  )
+}
+
+About.propTypes = {
+  users: PropTypes.array,
+  companies: PropTypes.array,
+  myResource: PropTypes.array,
+  currentUser: PropTypes.object
 }
 
 export default About

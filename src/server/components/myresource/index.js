@@ -3,12 +3,6 @@ import Header from '../common/Header'
 import PropTypes from 'prop-types'
 
 class MyResourceIndex extends Component {
-
-  static async getInitialProps({ ...ctx }) {
-    const { users, companies, myResource, currentUser } = ctx.data
-    return { users, companies, myResource, currentUser }
-  }
-
   static get propTypes() {
     return {
       currentUser: PropTypes.object,
@@ -41,20 +35,22 @@ class MyResourceIndex extends Component {
   }
 
   render() {
-    const { currentUser, myResource } = this.props.data
+    const { currentUser, myResource } = this.props
 
-    return (<div className="About Page">
-      <Header currentUser={currentUser} />
-      <h1>My Resource</h1>
-      <section className="content">
-        <p>e.g. Blogposts or todolist</p>
-        <ul>
-          {
-            this.resource(myResource)
-          }
-        </ul>
-      </section>
-    </div>)
+    return (
+      <div className="About Page">
+        <Header currentUser={currentUser} />
+        <h1>My Resource</h1>
+        <section className="content">
+          <p>e.g. Blogposts or todolist</p>
+          <ul>
+            {
+              this.resource(myResource)
+            }
+          </ul>
+        </section>
+      </div>
+    )
   }
 }
 

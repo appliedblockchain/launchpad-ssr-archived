@@ -54,9 +54,8 @@ const _updateResource = (resource, id, params) => {
 }
 
 export const updateResource = async (ctx) => {
-  const urlParams = ctx.params
+  const { id } = ctx.params
   const postParams = ctx.request.body
-  const id = urlParams[0]
 
   if (await findOne('myresource', id)) {
     const params = {

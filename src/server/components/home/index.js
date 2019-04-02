@@ -1,40 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Header from '../common/Header'
 
-class Home extends Component {
-  static async getInitialProps({ ...ctx }) {
-    const { currentUser } = ctx.data
-    return { currentUser }
-  }
+const currentUserText = user => user && <p>You&#39;re logged in as {user.email}</p>
 
-  static propTypes = {
-    currentUser: PropTypes.object
-  }
+const Home = ({ currentUser }) => (
+  <div className="Home Page">
+    <Header currentUser={currentUser} />
+    <section className="content">
+      <p className="intro">
+        To get started, view{' '}
+        <a href="https://github.com/appliedblockchain/base-ssr-app/tree/master/src/shared/components">
+          this directory, where all the components reside
+        </a>
+      </p>
 
-  currentUserText(user) {
-    return user && <p>You&#39;re logged in as {user.email}</p>
-  }
+      { currentUserText(currentUser) }
+    </section>
+  </div>
+)
 
-  render() {
-    const { currentUser } = this.props.data
-    console.log('CURR', currentUser)
-    return (
-      <div className="Home Page">
-        <Header currentUser={currentUser} />
-        <section className="content">
-          <p className="intro">
-            To get started, view{' '}
-            <a href="https://github.com/appliedblockchain/base-ssr-app/tree/master/src/shared/components">
-              this directory, where all the components reside
-            </a>
-          </p>
-
-          {this.currentUserText(currentUser)}
-        </section>
-      </div>
-    )
-  }
+Home.propTypes = {
+  currentUser: PropTypes.object
 }
 
 export default Home

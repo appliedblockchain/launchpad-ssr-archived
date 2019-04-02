@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function Nav({ user }) {
+const Nav = ({ user }) => {
   if (!user) {
     return null
   }

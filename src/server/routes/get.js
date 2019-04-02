@@ -29,7 +29,6 @@ const getRoute = path => {
           .methods
           .getHelloWorld()
           .call()
-
       }
 
       /* eslint-disable no-param-reassign */
@@ -38,7 +37,7 @@ const getRoute = path => {
           <Component
             path={urlPath}
             location={location}
-            data={data} />
+            {...data} />
         ),
         assets.version
       )
