@@ -29,5 +29,6 @@ router.get('/contract', getRoute('Contract'))
 router.get('/myresource', getRoute('MyResource'))
 router.get('/myresource/new', getRoute('MyResource/New'))
 router.get('/myresource/:id/edit', getRoute('MyResource/Edit'))
+router.get('*', getRoute('NotFound'))
 
 export default router
