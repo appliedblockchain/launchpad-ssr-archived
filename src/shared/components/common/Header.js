@@ -4,12 +4,14 @@ import { Helmet } from 'react-helmet'
 import Nav from '../nav/Nav'
 
 const Header = ({ currentUser }) => {
-  function loginButton() {
-    return (<a className="button btn-small" href="/login">Login</a>)
-  }
-
-  function loggedInMessage() {
-    return (<p>You&quot;re logged in!</p>)
+  function loggedInMessage(_currentUser) {
+    return (
+      <div>
+        <p>Logged in as {_currentUser.email}</p>
+        <br />
+        <a href="/logout"> Logout</a>
+      </div>
+    )
   }
 
   const logoImg = 'ab.jpg'
@@ -23,7 +25,7 @@ const Header = ({ currentUser }) => {
       <a href="/">
         <div className="header">
           <div className="header-right right">
-            { !currentUser ? loginButton() : loggedInMessage() }
+            { currentUser && loggedInMessage(currentUser) }
           </div>
           <a href="/">
             <img src={logoImgPath} className="logo" alt="logo" />
@@ -31,13 +33,15 @@ const Header = ({ currentUser }) => {
           <h2>Welcome to SSR React</h2>
         </div>
       </a>
-      <Nav />
+      {currentUser && <Nav />}
     </div>
   )
 }
 
 Header.propTypes = {
-  currentUser: PropTypes.object
+  currentUser: PropTypes.shape({
+    email: PropTypes.string
+  })
 }
 
 export default Header

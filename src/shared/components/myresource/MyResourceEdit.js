@@ -6,14 +6,15 @@ import PropTypes from 'prop-types'
 class MyResourceEdit extends Component {
 
   static async getInitialProps({ ...ctx }) {
-    const { myResource } = ctx.data
-    return { myResource }
+    const { myResource, currentUser } = ctx.data
+    return { myResource, currentUser }
   }
 
   static get propTypes() {
     return {
       match: PropTypes.object,
-      myResource: PropTypes.array
+      myResource: PropTypes.any, // eslint-disable-line
+      currentUser: PropTypes.object
     }
   }
 
@@ -30,14 +31,13 @@ class MyResourceEdit extends Component {
     const params = this.props.match.params
     console.log('params', params)
     const resources = this.props.myResource
-    let resource = resources.filter((res) => {
+    const currentUser = this.props.currentUser
+    const resource = resources.find((res) => {
       return res.id === Number(params.id)
     })
-    resource = resource[0]
-    console.log('resource:', resource)
 
     return (<div className="MyResource MyResourceEdit Page">
-      <Header />
+      <Header currentUser={currentUser} />
       <h1>Edit resource</h1>
       <h3>(id: {resource.id})</h3>
       <form method="post" action={`/myresource/${resource.id}/update`}>

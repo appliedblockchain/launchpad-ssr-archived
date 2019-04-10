@@ -1,16 +1,19 @@
-import findOne from '../utils/db/findOne'
+import findOne from '../modules/db/findOne'
 
 const currentSession = async (ctx) => {
   const { session } = ctx
+
+  if (!session) {
+    return { user: null }
+  }
+
   const { userId } = session
-  console.log('Auth - userId:', userId)
+
   if (!userId) {
     return { user: null }
   }
-  let user = await findOne('users', userId)
+  const user = await findOne('users', userId)
   if (user) {
-    user = user[0]
-    console.log(`Auth - user: ${user.email}`)
     return { user }
   }
 }

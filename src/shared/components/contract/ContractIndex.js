@@ -5,21 +5,22 @@ import PropTypes from 'prop-types'
 class Contract extends Component {
 
   static async getInitialProps({ ...ctx }) {
-    const { contractValue } = ctx.data
-    return { contractValue }
+    const { contractValue, currentUser } = ctx.data
+    return { contractValue, currentUser }
   }
 
   static get propTypes() {
     return {
-      contractValue: PropTypes.string
+      contractValue: PropTypes.string,
+      currentUser: PropTypes.object
     }
   }
 
   render() {
-    const { contractValue } = this.props
+    const { contractValue, currentUser } = this.props
 
     return (<div className="About Page">
-      <Header />
+      <Header currentUser={currentUser} />
       <h1>Hello World Contract</h1>
       <section className="content">
         <h1>Current Value: {contractValue}</h1>

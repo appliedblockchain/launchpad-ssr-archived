@@ -6,6 +6,7 @@ services:
     build:
       context: .
       args:
+        - NPM_TOKEN
         - PORT=80
         - DB_HOST=postgres
     ports:
@@ -13,9 +14,10 @@ services:
     depends_on:
       - postgres
     environment:
-      - CONTRACT_ADDRESSES={"HelloWorld":"0x2Bd63177f61D0Dc67534d48406c1849005dfE04B"}
+      - REDIS_HOST=discovery
+      - FROM=0fe32bb59e5993e6b5d45a963204aaffea2379c9 # parity1 unlocked account
       - DB_HOST=postgres
-      - ETHEREUM_JSONRPC_ENDPOINT=http://parity:8545
+      - ETHEREUM_JSONRPC_ENDPOINT=http://parity1:8545
     networks:
       - main
   postgres:
@@ -27,16 +29,80 @@ services:
     restart: unless-stopped
     networks:
       - main
-  parity:
-    image: appliedblockchain/parity-solo-instant:latest
-    restart: always
-    volumes:
-      - parity:/solo/chains
+  parity1:
+    hostname: launchpad-parity1
+    build:
+      context: ./stack
+      dockerfile: Dockerfile-parity
+      args:
+        - PARITY_ID=1
+        - NPM_TOKEN
+        - S3_ACCESS_KEY_ID
+        - S3_SECRET_ACCESS_KEY
+        - S3_BUCKET_NAME
+    environment:
+      - PARITY_ID=1
+    depends_on:
+      - discovery
+    networks:
+    - main
     ports:
+      - 8180:8180
       - 8545:8545
       - 8546:8546
+      - 30303:30303
+    image: appliedblockchain/launchpad-parity1:latest
+    volumes:
+      - parity1_data:/parity/data
+    depends_on:
+      - discovery
+  parity2:
+    hostname: launchpad-parity2
+    build:
+      context: ./stack
+      dockerfile: Dockerfile-parity
+      args:
+        - PARITY_ID=2
+        - NPM_TOKEN
+    environment:
+      - PARITY_ID=2
+    depends_on:
+      - discovery
     networks:
       - main
+    image: appliedblockchain/launchpad-parity2:latest
+    volumes:
+      - parity2_data:/parity/data
+    depends_on:
+      - discovery
+  parity3:
+    hostname: launchpad-parity3
+    build:
+      context: ./stack
+      dockerfile: Dockerfile-parity
+      args:
+        - PARITY_ID=3
+        - NPM_TOKEN
+    environment:
+      - PARITY_ID=3
+    depends_on:
+      - discovery
+    networks:
+       - main
+    image: appliedblockchain/launchpad-parity3:latest
+    volumes:
+      - parity3_data:/parity/data
+    depends_on:
+      - discovery
+  discovery:
+    hostname: discovery
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+    - main
+    volumes:
+      - discovery:/data
   logspout:
     image: gliderlabs/logspout
     deploy:
@@ -49,8 +115,12 @@ services:
         target: /var/run/docker.sock
         source: /var/run/docker.sock
 
+
 volumes:
-  parity:
+  discovery:
+  parity1_data:
+  parity2_data:
+  parity3_data:
   database:
 networks:
   main:

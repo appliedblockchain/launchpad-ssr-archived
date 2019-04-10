@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-const createRessourceHandler = async (ctx) => {
+const updateContractValue = async (ctx) => {
   const postParams = ctx.request.body
 
   const params = {
@@ -16,5 +16,5 @@ const createRessourceHandler = async (ctx) => {
   ctx.redirect('/contract')
 }
 
-export default createRessourceHandler
+export default updateContractValue
 

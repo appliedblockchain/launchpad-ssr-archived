@@ -1,18 +1,26 @@
 import React, { Component } from 'react'
 import Header from '../common/Header'
 import MyResourceForm from './MyResourceForm'
+import PropTypes from 'prop-types'
 
 class MyResourceNew extends Component {
 
   static async getInitialProps({ ...ctx }) {
-    const { myResource } = ctx.data
-    return { myResource }
+    const { currentUser } = ctx.data
+    return { currentUser }
+  }
+
+  static get propTypes() {
+    return {
+      currentUser: PropTypes.object
+    }
   }
 
   render() {
+    const { currentUser } = this.props
     return (
       <div className="MyResource MyResourceNew Page">
-        <Header />
+        <Header currentUser={currentUser} />
         <h1>New Resource</h1>
         <section className="content">
           <form method="post" action="/myresource">
