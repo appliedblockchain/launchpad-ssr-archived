@@ -103,6 +103,18 @@ services:
     - main
     volumes:
       - discovery:/data
+  logspout:
+    image: gliderlabs/logspout
+    deploy:
+      mode: global
+    environment:
+      - SYSLOG_HOST=logs.papertrailapp.com:34888
+    command: syslog+tls://$$SYSLOG_HOST
+    volumes:
+      - type: bind
+        target: /var/run/docker.sock
+        source: /var/run/docker.sock
+
 
 volumes:
   discovery:

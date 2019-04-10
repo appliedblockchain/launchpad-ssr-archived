@@ -1,14 +1,14 @@
 'use strict'
 
-export const logout = async (ctx) => {
-  ctx.session = null // eslint-disable-line
-  ctx.redirect('/login')
-}
-
 import findOneBy from '../modules/db/findOneBy'
 import qs from 'querystring'
 
 import { compare } from '@appliedblockchain/mantle-auth/auth/scrypt'
+
+export const logout = async (ctx) => {
+  ctx.session = null // eslint-disable-line
+  ctx.redirect('/login')
+}
 
 export const login = async (ctx) => {
   const { session } = ctx
