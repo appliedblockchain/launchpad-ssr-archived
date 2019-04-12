@@ -5,11 +5,9 @@ import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import session from 'koa-session'
 import { contracts, web3 } from './utils/web3'
-import { checkLoggedIn, assignToContext } from './middleware'
+import { assignToContext, checkLoggedIn } from './middleware'
 import redisStore from 'koa-redis'
-
 import router from './routes'
-
 
 const server = new Koa()
 // TODO: config

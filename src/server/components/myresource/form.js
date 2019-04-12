@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function MyResourceForm(props) {
-
+const MyResourceForm = props => {
   const resource = props.resource
   const name = resource && resource.name
   const description = resource && resource.description
+
   return (
     <div>
       <label htmlFor="resource-name"><strong>Name:</strong></label>

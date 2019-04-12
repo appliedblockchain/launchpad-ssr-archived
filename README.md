@@ -8,7 +8,7 @@
 
 You can use local postgres and parity-solo-instant or use the provided docker container, just run this:
 
-    npm run dev-stack
+    npm run stack:dev
 
 ### Prepare and Seed Database
 

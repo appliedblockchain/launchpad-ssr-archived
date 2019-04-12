@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import Nav from '../nav/Nav'
+import Nav from '../nav'
 
 const Header = ({ currentUser }) => {
   function loggedInMessage(_currentUser) {
@@ -33,7 +33,7 @@ const Header = ({ currentUser }) => {
           <h2>Welcome to SSR React</h2>
         </div>
       </a>
-      {currentUser && <Nav />}
+      {currentUser && <Nav user={currentUser} />}
     </div>
   )
 }

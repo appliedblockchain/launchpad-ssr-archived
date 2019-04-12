@@ -1,36 +1,51 @@
-import routes from '../../shared/routes'
 import selectResource from '../modules/db/selectResource'
-import { render } from '@jaredpalmer/after'
-import Document from '../../Document'
+import React from 'react'
 import currentSession from '../utils/currentSession'
 import getVersion from '../utils/version'
+import { renderToString } from 'react-dom/server'
+import renderPage from '../utils/renderPage'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
-const getRoute = async (ctx) => {
-  const session = await currentSession(ctx)
-  const { user } = session
-  assets.version = await getVersion()
+const getRoute = path => {
+  const { default: Component } = require(`../components/${path}`)
 
-  try {
-    const html = await render({
-      req: ctx.req,
-      res: ctx.res,
-      routes,
-      assets,
-      document: Document,
-      data: {
-        contractValue: await ctx.contracts.HelloWorld.methods.getHelloWorld().call(),
+  return async ctx => {
+    const session = await currentSession(ctx)
+    const { user: currentUser } = session
+    assets.version = await getVersion()
+
+    try {
+      const { search, path: urlPath } = ctx.req._parsedUrl
+      const location = { search }
+      const data = {
+        currentUser,
         users: await selectResource('users'),
         companies: await selectResource('companies'),
         myResource: await selectResource('myresource'),
-        currentUser: user
+        contractValue: await ctx
+          .contracts
+          .HelloWorld
+          .methods
+          .getHelloWorld()
+          .call()
       }
-    })
-    const context = ctx
-    context.body = html
-  } catch (error) {
-    console.error(error)
+
+      /* eslint-disable no-param-reassign */
+      ctx.body = renderPage(
+        renderToString(
+          <Component
+            path={urlPath}
+            location={location}
+            {...data} />
+        ),
+        assets.version
+      )
+      /* eslint-enable no-param-reassign */
+    } catch (error) {
+      console.error(error)
+    }
+
   }
 }
 
