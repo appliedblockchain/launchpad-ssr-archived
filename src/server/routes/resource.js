@@ -32,8 +32,7 @@ const _deleteResource = async (resourceName, resource) => {
 }
 
 export const deleteResource = async (ctx) => {
-  const urlParams = ctx.params
-  const id = urlParams[0]
+  const { id } = ctx.params
 
   const resource = await findOne('myresource', id)
 
